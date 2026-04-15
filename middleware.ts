@@ -7,4 +7,4 @@ export const config = {
     matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
 };
 
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
