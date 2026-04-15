@@ -1,0 +1,454 @@
+{
+    "HomePage": {
+        "metadata": {
+            "title": "Ticktasks - Zamana Dayalı Eylem Planı Yürütücüsü",
+            "description": "Zamana dayalı eylem planlarını hassasiyetle oluşturun ve uygulayın. Antrenmanlar, tarifler, çalışma seansları ve zamanlı rutinler için mükemmel. Gerçek zamanlı zamanlayıcılarla adım adım yürütme.",
+            "keywords": "zamana dayalı planlar, eylem planı yürütücüsü, antrenman zamanlayıcısı, tarif zamanlayıcısı, çalışma planlayıcısı, görev zamanlayıcısı, interval antrenmanı, verimlilik aracı"
+        },
+        "hero": {
+            "title": "Ticktasks: Zamana Dayalı Plan Oluşturma ve Yönetme",
+            "subtitle": "Zamana dayalı eylem planları oluşturun ve adım adım uygulayın. Antrenmanlar, tarifler, çalışma seansları ve zamanlı rutinler için mükemmel."
+        },
+        "features": {
+            "title": "Neden Ticktasks?",
+            "timedSteps": {
+                "title": "Zamanlı Adımlar",
+                "description": "Planınızdaki her adımın belirli bir süresi var. Her aşamada size rehberlik eden gerçek zamanlı zamanlayıcılarla planları uygulayın."
+            },
+            "stepGroups": {
+                "title": "Tekrarlanabilir Gruplar",
+                "description": "Adımları gruplandırın ve tekrar sayısını belirleyin. Interval antrenmanları, yemek hazırlığı veya tekrarlayan görev dizileri için mükemmel."
+            },
+            "publicPlans": {
+                "title": "Paylaş & Keşfet",
+                "description": "Planlarınızı herkese açık olarak paylaşın. İlham ve üretkenlik için topluluk planlarına göz atın."
+            },
+            "bookmarks": {
+                "title": "Favorileri Kaydet",
+                "description": "Sevdiğiniz topluluk planlarını yer imlerine ekleyin ve anında erişin. Kişisel üretkenlik planları kütüphanenizi oluşturun."
+            }
+        },
+        "howItWorks": {
+            "title": "Nasıl Çalışır?",
+            "step1": {
+                "title": "Planınızı Oluşturun",
+                "description": "Planınıza bir başlık verin ve zamanlı adımlar eklemeye başlayın. Her görev için saat, dakika ve saniye belirleyin. İlgili adımları gruplandırın ve kaç kez tekrar edeceğini ayarlayın."
+            },
+            "step2": {
+                "title": "Adımlarınızı Düzenleyin",
+                "description": "Adımları uygulamak istediğiniz sırada düzenleyin. Devre antrenman turları veya hazırlık döngüleri gibi tekrarlayan diziler oluşturmak için adım gruplarını kullanın."
+            },
+            "step3": {
+                "title": "Hassasiyetle Uygulayın",
+                "description": "Rutininizi başlatmak için plan yürütücüsünü başlatın. Gerçek zamanlı zamanlayıcılar, sesli bildirimler ve adım adım rehberlik ile tüm planınızı takip edin."
+            },
+            "step4": {
+                "title": "Paylaşın veya Gizli Tutun",
+                "description": "Planınızı toplulukla paylaşmak için herkese açık yapın veya kişisel kullanım için gizli tutun. Planlarınızı istediğiniz zaman düzenleyin ve geliştirin."
+            }
+        },
+        "useCases": {
+            "title": "Şunlar İçin Mükemmel",
+            "workout": {
+                "title": "🏋️ Antrenmanlar",
+                "description": "Interval antrenmanı, devre rutinleri, yoga akışları, hassas zamanlamalı esneme dizileri."
+            },
+            "cooking": {
+                "title": "🍳 Yemek Pişirme",
+                "description": "Tam zamanlamalı tarif adımları, yemek hazırlık dizileri, fırın programları."
+            },
+            "study": {
+                "title": "📚 Çalışma Seansları",
+                "description": "Pomodoro tekniği, odaklanmış çalışma blokları, zamanlı pratik seansları, sınav hazırlık rutinleri."
+            }
+        },
+        "cta": {
+            "title": "Başlamaya Hazır mısınız?"
+        },
+        "links": {
+            "myPlans": "Planlarım",
+            "login": "Giriş Yap",
+            "register": "Kayıt Ol",
+            "publicPlans": "Topluluk Planlarını Keşfet"
+        }
+    },
+    "Header": {
+        "home": "Ana Sayfa",
+        "plans": "Topluluk",
+        "myPlans": "Planlarım",
+        "bookmarks": "Yer İmleri",
+        "createPlan": "Plan Oluştur",
+        "account": "Hesap",
+        "login": "Giriş Yap",
+        "register": "Kayıt Ol",
+        "logout": "Çıkış Yap",
+        "menu": "Menü",
+        "openMenu": "Menüyü aç",
+        "theme": "Tema"
+    },
+    "LoginPage": {
+        "title": "Giriş Yap",
+        "description": "Planlar oluşturmaya ve yönetmeye başlamak için Ticktasks'a giriş yapın.",
+        "metadata": {
+            "title": "Giriş Yap - Ticktasks",
+            "description": "Zamana dayalı eylem planlarınızı oluşturmak, yönetmek ve uygulamak için Ticktasks hesabınıza giriş yapın.",
+            "keywords": "giriş yap, oturum aç, ticktasks giriş, kullanıcı hesabı"
+        },
+        "form": {
+            "usernameXorEmail": "Kullanıcı Adı veya E-posta",
+            "usernameXorEmailPlaceholder": "Kullanıcı adınızı veya e-postanızı girin",
+            "password": "Şifre",
+            "passwordPlaceholder": "Şifrenizi girin",
+            "submitButton": "Giriş Yap",
+            "noAccount": "Hesabınız yok mu? Ticktasks'a kayıt olun",
+            "forgotPassword": "Şifrenizi mi unuttunuz? Buradan sıfırlayın"
+        }
+    },
+    "RegisterPage": {
+        "title": "Kayıt Ol",
+        "description": "Planlar oluşturmaya ve yönetmeye başlamak için bir Ticktasks hesabı oluşturun.",
+        "metadata": {
+            "title": "Kayıt Ol - Ticktasks",
+            "description": "Zamana dayalı eylem planları oluşturmak, toplulukla paylaşmak ve görevlerinizi organize etmek için ücretsiz Ticktasks hesabınızı oluşturun.",
+            "keywords": "kayıt ol, hesap oluştur, ticktasks kaydı, yeni kullanıcı"
+        },
+        "form": {
+            "username": "Kullanıcı Adı",
+            "usernamePlaceholder": "Bir kullanıcı adı seçin",
+            "usernameTitle": "Kullanıcı adı 2-30 karakter olmalı ve sadece harf, rakam, alt çizgi ve tire içermelidir",
+            "email": "E-posta",
+            "emailPlaceholder": "E-postanızı girin",
+            "password": "Şifre",
+            "passwordPlaceholder": "Bir şifre oluşturun",
+            "passwordTitle": "Şifre en az 8 karakter olmalı ve en az bir harf ve bir rakam içermelidir",
+            "confirmPassword": "Şifreyi Onayla",
+            "confirmPasswordPlaceholder": "Şifrenizi onaylayın",
+            "submitButton": "Kayıt Ol",
+            "haveAccount": "Zaten bir hesabınız var mı? Giriş yapın"
+        }
+    },
+    "ForgotPasswordPage": {
+        "title": "Şifremi Unuttum",
+        "description": "Şifrenizi sıfırlamak için kullanıcı adınızı veya e-postanızı girin.",
+        "metadata": {
+            "title": "Şifremi Unuttum - Ticktasks",
+            "description": "Ticktasks şifrenizi sıfırlayın. Şifre sıfırlama talimatlarını almak için kullanıcı adınızı veya e-postanızı girin.",
+            "keywords": "şifre unuttum, şifre sıfırlama, hesap kurtarma, ticktasks şifre"
+        },
+        "form": {
+            "usernameXorEmail": "Kullanıcı Adı veya E-posta",
+            "usernameXorEmailPlaceholder": "Kullanıcı adınızı veya e-postanızı girin",
+            "submitButton": "Sıfırlama Bağlantısı Gönder",
+            "rememberPassword": "Şifrenizi hatırladınız mı? Giriş yapın"
+        }
+    },
+    "ResetPasswordPage": {
+        "title": "Şifrenizi Sıfırlayın",
+        "description": "Hesabınız için yeni bir şifre girin.",
+        "invalidLink": {
+            "title": "Geçersiz Sıfırlama Bağlantısı",
+            "description": "Şifre sıfırlama bağlantısı geçersiz veya eksik. Lütfen yeni bir şifre sıfırlama isteği gönderin.",
+            "button": "Şifre Sıfırlama İsteği Gönder"
+        },
+        "form": {
+            "currentPassword": "Mevcut Şifre",
+            "currentPasswordPlaceholder": "Mevcut şifrenizi girin",
+            "newPassword": "Yeni Şifre",
+            "newPasswordPlaceholder": "Yeni şifrenizi girin",
+            "confirmPassword": "Yeni Şifreyi Onayla",
+            "confirmPasswordPlaceholder": "Yeni şifrenizi onaylayın",
+            "submitButton": "Şifreyi Sıfırla",
+            "rememberPassword": "Şifrenizi hatırladınız mı? Giriş yapın"
+        }
+    },
+    "AccountPage": {
+        "title": "Hesap Bilgileri",
+        "description": {
+            "intro": "Ticktasks hesap ayarlarınızı ve kimlik bilgilerinizi yönetin. Profil bilgilerinizi güncelleyin ve şifrenizi değiştirin.",
+            "features": "Hesabınızı güvenli tutun ve bilgilerinizi güncel tutun. Kullanıcı adınızı, e-postanızı ve şifrenizi tek bir yerde yönetin."
+        },
+        "metadata": {
+            "title": "Hesap Ayarları - Ticktasks",
+            "description": "Ticktasks hesabınızı yönetin. Profilinizi güncelleyin, şifrenizi değiştirin ve bilgilerinizi güvende tutun.",
+            "keywords": "hesap ayarları, profil, kullanıcı ayarları, şifre değiştir, hesap güncelle"
+        },
+        "auth": {
+            "title": "Yetkilendirme Gerekli",
+            "description": "Hesap bilgilerinizi görüntülemek veya güncellemek için giriş yapmalısınız."
+        },
+        "tabs": {
+            "profile": "Profil",
+            "password": "Şifre"
+        },
+        "profileForm": {
+            "username": "Kullanıcı Adı",
+            "usernamePlaceholder": "Kullanıcı adınızı girin",
+            "email": "E-posta",
+            "emailPlaceholder": "E-postanızı girin",
+            "submitButton": "Profili Güncelle"
+        },
+        "passwordForm": {
+            "currentPassword": "Mevcut Şifre",
+            "currentPasswordPlaceholder": "Mevcut şifrenizi girin",
+            "newPassword": "Yeni Şifre",
+            "newPasswordPlaceholder": "Yeni şifrenizi girin",
+            "confirmPassword": "Yeni Şifreyi Onayla",
+            "confirmPasswordPlaceholder": "Yeni şifrenizi onaylayın",
+            "submitButton": "Şifreyi Güncelle"
+        }
+    },
+    "CreatePlanPage": {
+        "title": "Plan Oluştur",
+        "description": "Adımlar ve tekrarlanan gruplarla özel planınızı tasar layın.",
+        "metadata": {
+            "title": "Plan Oluştur - Ticktasks",
+            "description": "Özel adımlar ve tekrarlanan gruplarla yeni bir zamana dayalı eylem planı oluşturun. Antrenmanınızı, tarifinizi, çalışma seansınızı veya herhangi bir zamanlı rutininizi oluşturun.",
+            "keywords": "plan oluştur, yeni plan, plan oluştur, özel plan, antrenman planı, tarif planı, çalışma planı"
+        },
+        "auth": {
+            "title": "Kimlik Doğrulama Gerekli",
+            "description": "Plan oluşturmak için giriş yapın veya kayıt olun. Kimlik doğrulamadan sonra buraya yönlendirileceksiniz."
+        },
+        "form": {
+            "planTitle": "Plan Başlığı",
+            "planTitlePlaceholder": "Plan başlığını girin",
+            "makePublic": "Bu planı herkese açık yap",
+            "stepsHeading": "Adımlar",
+            "totalLabel": "Toplam:",
+            "addStep": "Adım Ekle",
+            "addRepeatingGroup": "Tekrarlanan Grup Ekle",
+            "submitButton": "Plan Oluştur",
+            "stepTitlePlaceholder": "Adım başlığı",
+            "hoursPlaceholder": "Saat",
+            "hoursLabel": "Saat",
+            "minutesPlaceholder": "Dakika",
+            "minutesLabel": "Dakika",
+            "secondsPlaceholder": "Saniye",
+            "secondsLabel": "Saniye",
+            "repeatLabel": "Tekrar",
+            "timesLabel": "kez",
+            "addStepToGroup": "Gruba Adım Ekle"
+        },
+        "success": {
+            "title": "Plan Başarıyla Oluşturuldu!",
+            "description": "Planınız oluşturuldu ve kaydedildi.",
+            "goToPlan": "Plana Git",
+            "viewMyPlans": "Planlarımı Görüntüle"
+        }
+    },
+    "EditPlanPage": {
+        "title": "Planı Düzenle",
+        "description": "Planınızı adımlar ve tekrarlanan gruplarla güncelleyin.",
+        "metadata": {
+            "title": "Planı Düzenle - Ticktasks",
+            "description": "Zamana dayalı eylem planınızı düzenleyin ve güncelleyin. Adımları değiştirin, zamanlamaları ayarlayın ve plan yapınızı yeniden düzenleyin.",
+            "keywords": "plan düzenle, plan güncelle, plan değiştir, plan düzenleyici"
+        },
+        "auth": {
+            "title": "Kimlik Doğrulama Gerekli",
+            "description": "Plan düzenlemek için giriş yapın veya kayıt olun. Kimlik doğrulamadan sonra buraya yönlendirileceksiniz."
+        },
+        "form": {
+            "planTitle": "Plan Başlığı",
+            "planTitlePlaceholder": "Plan başlığını girin",
+            "makePublic": "Bu planı herkese açık yap",
+            "stepsHeading": "Adımlar",
+            "totalLabel": "Toplam:",
+            "addStep": "Adım Ekle",
+            "addRepeatingGroup": "Tekrarlanan Grup Ekle",
+            "submitButton": "Planı Güncelle",
+            "stepTitlePlaceholder": "Adım başlığı",
+            "hoursPlaceholder": "Saat",
+            "hoursLabel": "Saat",
+            "minutesPlaceholder": "Dakika",
+            "minutesLabel": "Dakika",
+            "secondsPlaceholder": "Saniye",
+            "secondsLabel": "Saniye",
+            "repeatLabel": "Tekrar",
+            "timesLabel": "kez",
+            "addStepToGroup": "Gruba Adım Ekle"
+        },
+        "success": {
+            "title": "Plan Başarıyla Güncellendi!",
+            "description": "Planınız güncellendi.",
+            "goToPlan": "Plana Git",
+            "viewMyPlans": "Planlarımı Görüntüle"
+        }
+    },
+    "MyPlansPage": {
+        "title": "Planlarım",
+        "createPlanButton": "Plan Oluştur",
+        "metadata": {
+            "title": "Planlarım - Ticktasks",
+            "description": "Tüm kişisel görev planlarınızı yönetin ve organize edin. Verimlilik stratejilerinizi, proje iş akışlarınızı ve günlük rutinlerinizi tek bir yerde oluşturun, düzenleyin ve takip edin.",
+            "keywords": "planlarım, kişisel planlar, görev yönetimi, verimlilik, plan organizasyonu, iş akışı yönetimi"
+        },
+        "description": {
+            "intro": "Tüm kişisel görev planlarınızı tek bir yerde yönetin ve organize edin. Verimlilik stratejilerinizi, proje iş akışlarınızı ve günlük rutinlerinizi oluşturun, düzenleyin ve takip edin.",
+            "features": "Planlarınızı kolayca arayın, düzenleyin, silin veya yer imi ekleyin. Görevlerinizi organize tutun ve kolaylaştırılmış bir planlama deneyimiyle hedeflerinize ulaşın.",
+            "stats": "📋 Koleksiyonunuzda {total} plan bulunuyor"
+        },
+        "auth": {
+            "title": "Kimlik Doğrulama Gerekli",
+            "description": "Planlarınızı görüntülemek için giriş yapın veya kayıt olun. Kimlik doğrulamadan sonra buraya yönlendirileceksiniz."
+        },
+        "table": {
+            "searchPlaceholder": "Plan başlığına göre ara...",
+            "emptyState": "Henüz hiç plan oluşturmadınız.",
+            "emptyStateButton": "İlk planınızı oluşturun",
+            "noResults": "Eşleşen plan bulunamadı",
+            "columns": {
+                "title": "Başlık",
+                "duration": "Süre",
+                "createdAt": "Oluşturulma Tarihi",
+                "actions": "İşlemler"
+            },
+            "actions": {
+                "edit": "Düzenle",
+                "bookmark": "Yer İmi Ekle",
+                "removeBookmark": "Yer İmini Kaldır",
+                "delete": "Sil"
+            },
+            "deleteDialog": {
+                "title": "Kesinlikle emin misiniz?",
+                "description": "Bu, \"{title}\" planını ve tüm adımlarını kalıcı olarak silecektir. Bu işlem geri alınamaz.",
+                "cancel": "İptal",
+                "confirm": "Sil"
+            },
+            "pagination": {
+                "showing": "{total} plandan {start}-{end} gösteriliyor",
+                "page": "Sayfa {current} / {total}",
+                "previous": "Önceki",
+                "next": "Sonraki"
+            }
+        }
+    },
+    "PublicPlansPage": {
+        "mainTitle": "Ticktasks: Çok Yönlü Görev Yönetimi Web Uygulaması",
+        "title": "Topluluk Planları",
+        "metadata": {
+            "title": "Topluluk Planlarına Gözat - Ticktasks",
+            "description": "Ticktasks topluluğu tarafından paylaşılan görev planlarını keşfedin. İlham alın, favorilerinize yer imi ekleyin ve başkalarının planlama stratejilerinden öğrenin.",
+            "keywords": "topluluk planları, paylaşılan planlar, görev yönetimi, verimlilik şablonları, planlama ilhamı"
+        },
+        "description": {
+            "intro": "Ticktasks topluluğu tarafından oluşturulan ve paylaşılan görev planlarını keşfedin. Dünya çapındaki kullanıcılar tarafından paylaşılan çeşitli verimlilik stratejilerine, proje şablonlarına ve günlük rutinlere göz atın.",
+            "features": "Başlığa göre arama yapın, favorilerinize yer imi ekleyin ve başkalarının görevlerini nasıl organize ettiğinden ve hedeflerine nasıl ulaştığından ilham alın.",
+            "stats": "🌟 Topluluğumuzdan {total} topluluk planı sunuluyor"
+        },
+        "links": {
+            "home": "Ana Sayfa",
+            "login": "Giriş Yap",
+            "register": "Kayıt Ol",
+            "viewMyPlans": "Planlarımı Görüntüle"
+        },
+        "table": {
+            "searchPlaceholder": "Topluluk planlarını başlığa göre ara...",
+            "emptyState": "Henüz topluluk planı yok.",
+            "emptyStateSubtext": "İlk planı oluşturup paylaşan siz olun!",
+            "noResults": "Eşleşen topluluk planı bulunamadı",
+            "columns": {
+                "title": "Başlık",
+                "duration": "Süre",
+                "createdAt": "Oluşturulma Tarihi",
+                "actions": "İşlemler"
+            },
+            "actions": {
+                "view": "Görüntüle",
+                "bookmark": "Yer İmi Ekle",
+                "removeBookmark": "Yer İmini Kaldır"
+            },
+            "pagination": {
+                "showing": "{total} plandan {start}-{end} gösteriliyor",
+                "page": "Sayfa {current} / {total}",
+                "previous": "Önceki",
+                "next": "Sonraki"
+            }
+        }
+    },
+    "BookmarksPage": {
+        "title": "Yer İmine Eklenen Planlar",        "description": {
+            "intro": "Tüm yer imlerine eklenen planlarınıza tek bir konumdan erişin. Favori topluluk planlarınızı kaydedin ve kişisel kütüphanenizi oluşturun.",
+            "features": "Kaydetmiş olduğunuz planları hızlıca bulun ve uygulayın. Yer imlerine eklenen planlarınızı kolayca arayın, düzenleyin ve yönetin.",
+            "stats": "📚 {total} yer imlerine eklenmiş planınız var"
+        },
+        "metadata": {
+            "title": "Yer İmine Eklenen Planlar - Ticktasks",
+            "description": "Yer imlerine eklediğiniz planları görüntüleyin ve yönetin. Favori topluluk planlarınıza erişin ve kişisel verimlilik kütüphanenizi oluşturun.",
+            "keywords": "yer imleri, kaydedilen planlar, favori planlar, yer imlerine eklenen planlar, plan kütüphanesi"
+        },        "auth": {
+            "title": "Kimlik Doğrulama Gerekli",
+            "description": "Yer imine eklediğiniz planları görüntülemek için giriş yapın veya kayıt olun. Kimlik doğrulamadan sonra buraya yönlendirileceksiniz."
+        },
+        "table": {
+            "searchPlaceholder": "Yer imine eklenen planları ara...",
+            "emptyState": "Henüz hiç plan yer imine eklemediniz.",
+            "noResults": "Eşleşen yer imi bulunamadı",
+            "columns": {
+                "title": "Başlık",
+                "duration": "Süre",
+                "createdAt": "Oluşturulma Tarihi",
+                "actions": "İşlemler"
+            },
+            "actions": {
+                "bookmark": "Yer İmi Ekle",
+                "removeBookmark": "Yer İmini Kaldır"
+            },
+            "pagination": {
+                "showing": "{total} plandan {start}-{end} gösteriliyor",
+                "page": "Sayfa {current} / {total}",
+                "previous": "Önceki",
+                "next": "Sonraki"
+            }
+        }
+    },
+    "PlanDetailPage": {
+        "backToPlans": "Planlara Dön",
+        "created": "Oluşturuldu",
+        "editPlan": "Planı Düzenle",
+        "metadata": {
+            "title": "{title} - Ticktasks",
+            "description": "Bu zamana dayalı eylem planını uygulayın: {title}. Gerçek zamanlı zamanlayıcılar ve adım adım rehberlikle takip edin.",
+            "keywords": "plan yürütücüsü, {title}, zamana dayalı plan, eylem planı"
+        }
+    },
+    "PlanExecutor": {
+        "preview": {
+            "title": "Adımlar Önizlemesi",
+            "noSteps": "Bu planda henüz adım yok.",
+            "repetition": "Tekrar",
+            "manual": "Manuel",
+            "totalDuration": "Toplam Süre:",
+            "beginButton": "Planı Başlat"
+        },
+        "inProgress": {
+            "title": "Devam Ediyor",
+            "step": "Adım {current} / {total}",
+            "repetition": "Tekrar {current}",
+            "pauseButton": "Duraklat",
+            "resumeButton": "Devam Et",
+            "skipButton": "Atla",
+            "nextStepButton": "Sonraki Adım",
+            "noDuration": "Bu adımın süresi yok. Hazır olduğunuzda sonraki'ye tıklayın.",
+            "nextSteps": "Sonraki Adımlar:"
+        },
+        "completed": {
+            "title": "Plan Tamamlandı!",
+            "description": "\"{title}\" planının {count} adımının tamamını tamamladınız. Tebrikler!",
+            "replayButton": "Planı Tekrar Oynat",
+            "goToMyPlans": "Planlarıma Git",
+            "viewOtherPlans": "Diğer Planları Görüntüle"
+        },
+        "navigationWarning": "Devam eden bir planınız var. Ayrılmak istediğinizden emin misiniz? İlerlemeniz kaybolacak."
+    },
+    "AuthorizationCard": {
+        "loginButton": "Giriş Yap",
+        "registerButton": "Kayıt Ol",
+        "orDivider": "veya"
+    },
+    "NotFoundPage": {
+        "title": "404 - Bulunamadı",
+        "description": "Aradığınız sayfa mevcut değil.",
+        "backToHome": "Ana Sayfaya Dön"
+    }
+}

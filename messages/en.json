@@ -1,0 +1,456 @@
+{
+    "HomePage": {
+        "metadata": {
+            "title": "Ticktasks - Time-Based Action Plan Executor",
+            "description": "Create and execute time-based action plans with precision. Perfect for workouts, recipes, study sessions, and any timed routine. Step-by-step execution with real-time timers.",
+            "keywords": "time-based plans, action plan executor, workout timer, recipe timer, study planner, task timer, interval training, productivity tool"
+        },
+        "hero": {
+            "title": "Ticktasks: Time-Based Action Plan Executor",
+            "subtitle": "Create time-based action plans and execute them step-by-step. Perfect for workouts, recipes, study sessions, and any timed routine."
+        },
+        "features": {
+            "title": "Why Ticktasks?",
+            "timedSteps": {
+                "title": "Timed Steps",
+                "description": "Each step in your plan has a specific duration. Execute plans with real-time timers that guide you through every phase."
+            },
+            "stepGroups": {
+                "title": "Repeatable Groups",
+                "description": "Group steps together and set repetitions. Perfect for interval training, cooking prep, or any repetitive task sequences."
+            },
+            "publicPlans": {
+                "title": "Share & Discover",
+                "description": "Share your plans publicly for others to discover and use. Browse community plans for inspiration and productivity."
+            },
+            "bookmarks": {
+                "title": "Save Favorites",
+                "description": "Bookmark public plans you love and access them instantly. Build your personal library of productivity plans."
+            }
+        },
+        "howItWorks": {
+            "title": "How It Works",
+            "step1": {
+                "title": "Create Your Plan",
+                "description": "Give your plan a title and start adding timed steps. Set hours, minutes, and seconds for each task. Group related steps together and set how many times to repeat them."
+            },
+            "step2": {
+                "title": "Organize Your Steps",
+                "description": "Arrange steps in the order you want to execute them. Use step groups to create repeating sequences, like circuit training rounds or prep cycles."
+            },
+            "step3": {
+                "title": "Execute with Precision",
+                "description": "Launch the plan executor to start your routine. Follow along with real-time timers, audio notifications, and step-by-step guidance through your entire plan."
+            },
+            "step4": {
+                "title": "Share or Keep Private",
+                "description": "Make your plan public to share with the community, or keep it private for personal use. Edit and refine your plans anytime."
+            }
+        },
+        "useCases": {
+            "title": "Perfect For",
+            "workout": {
+                "title": "🏋️ Workouts",
+                "description": "Interval training, circuit routines, yoga flows, stretching sequences with precise timing."
+            },
+            "cooking": {
+                "title": "🍳 Cooking",
+                "description": "Recipe steps with exact timings, meal prep sequences, baking schedules."
+            },
+            "study": {
+                "title": "📚 Study Sessions",
+                "description": "Pomodoro technique, focused study blocks, timed practice sessions, exam prep routines."
+            }
+        },
+        "cta": {
+            "title": "Ready to Get Started?"
+        },
+        "links": {
+            "myPlans": "My Plans",
+            "login": "Login",
+            "register": "Register",
+            "publicPlans": "Explore Public Plans"
+        }
+    },
+    "Header": {
+        "home": "Home",
+        "plans": "Plans",
+        "myPlans": "My Plans",
+        "bookmarks": "Bookmarks",
+        "createPlan": "Create Plan",
+        "account": "Account",
+        "login": "Login",
+        "register": "Register",
+        "logout": "Logout",
+        "menu": "Menu",
+        "openMenu": "Open menu",
+        "theme": "Theme"
+    },
+    "LoginPage": {
+        "title": "Login",
+        "description": "Log in to Ticktasks to start creating and managing plans.",
+        "metadata": {
+            "title": "Login - Ticktasks",
+            "description": "Log in to your Ticktasks account to create, manage, and execute your time-based action plans.",
+            "keywords": "login, sign in, ticktasks login, user account"
+        },
+        "form": {
+            "usernameXorEmail": "Username xor Email",
+            "usernameXorEmailPlaceholder": "Enter your username xor email",
+            "password": "Password",
+            "passwordPlaceholder": "Enter your password",
+            "submitButton": "Login",
+            "noAccount": "Do not have an account? Register to Ticktasks",
+            "forgotPassword": "Forgot your password? Reset it here"
+        }
+    },
+    "RegisterPage": {
+        "title": "Register",
+        "description": "Create a Ticktasks account to start creating and managing plans.",
+        "metadata": {
+            "title": "Register - Ticktasks",
+            "description": "Create your free Ticktasks account to start building time-based action plans, share with the community, and organize your tasks.",
+            "keywords": "register, sign up, create account, ticktasks registration, new user"
+        },
+        "form": {
+            "username": "Username",
+            "usernamePlaceholder": "Choose a username",
+            "usernameTitle": "Username must be 2-30 characters and contain only letters, numbers, underscores, and hyphens",
+            "email": "Email",
+            "emailPlaceholder": "Enter your email",
+            "password": "Password",
+            "passwordPlaceholder": "Create a password",
+            "passwordTitle": "Password must be at least 8 characters and contain at least one letter and one number",
+            "confirmPassword": "Confirm Password",
+            "confirmPasswordPlaceholder": "Confirm your password",
+            "submitButton": "Register",
+            "haveAccount": "Already have an account? Login"
+        }
+    },
+    "ForgotPasswordPage": {
+        "title": "Forgot Password",
+        "description": "Enter your username xor email to reset your password.",
+        "metadata": {
+            "title": "Forgot Password - Ticktasks",
+            "description": "Reset your Ticktasks password. Enter your username or email to receive password reset instructions.",
+            "keywords": "forgot password, password reset, account recovery, ticktasks password"
+        },
+        "form": {
+            "usernameXorEmail": "Username xor Email",
+            "usernameXorEmailPlaceholder": "Enter your username xor email",
+            "submitButton": "Send Reset Link",
+            "rememberPassword": "Remember your password? Log in"
+        }
+    },
+    "ResetPasswordPage": {
+        "title": "Reset Your Password",
+        "description": "Please enter a new password for your account.",
+        "invalidLink": {
+            "title": "Invalid Reset Link",
+            "description": "The password reset link is invalid or incomplete. Please request a new password reset.",
+            "button": "Request Password Reset"
+        },
+        "form": {
+            "currentPassword": "Current Password",
+            "currentPasswordPlaceholder": "Enter your current password",
+            "newPassword": "New Password",
+            "newPasswordPlaceholder": "Enter your new password",
+            "confirmPassword": "Confirm New Password",
+            "confirmPasswordPlaceholder": "Confirm your new password",
+            "submitButton": "Reset Password",
+            "rememberPassword": "Remember your password? Log in"
+        }
+    },
+    "AccountPage": {
+        "title": "Account Credentials",
+        "description": {
+            "intro": "Manage your Ticktasks account settings and credentials. Update your profile information and change your password.",
+            "features": "Keep your account secure and your information up to date. Manage your username, email, and password all in one place."
+        },
+        "metadata": {
+            "title": "Account Settings - Ticktasks",
+            "description": "Manage your Ticktasks account. Update your profile, change your password, and keep your information secure.",
+            "keywords": "account settings, profile, user settings, change password, update account"
+        },
+        "auth": {
+            "title": "Authorization Required",
+            "description": "You must be logged in to view or update your account credentials."
+        },
+        "tabs": {
+            "profile": "Profile",
+            "password": "Password"
+        },
+        "profileForm": {
+            "username": "Username",
+            "usernamePlaceholder": "Enter your username",
+            "email": "Email",
+            "emailPlaceholder": "Enter your email",
+            "submitButton": "Update Profile"
+        },
+        "passwordForm": {
+            "currentPassword": "Current Password",
+            "currentPasswordPlaceholder": "Enter your current password",
+            "newPassword": "New Password",
+            "newPasswordPlaceholder": "Enter your new password",
+            "confirmPassword": "Confirm New Password",
+            "confirmPasswordPlaceholder": "Confirm your new password",
+            "submitButton": "Update Password"
+        }
+    },
+    "CreatePlanPage": {
+        "title": "Create Plan",
+        "description": "Design your custom plan with steps and repeating groups.",
+        "metadata": {
+            "title": "Create Plan - Ticktasks",
+            "description": "Create a new time-based action plan with custom steps and repeating groups. Build your workout, recipe, study session, or any timed routine.",
+            "keywords": "create plan, new plan, build plan, custom plan, workout plan, recipe plan, study plan"
+        },
+        "auth": {
+            "title": "Authentication Required",
+            "description": "Please log in or register to create a plan. You'll be redirected back here after authentication."
+        },
+        "form": {
+            "planTitle": "Plan Title",
+            "planTitlePlaceholder": "Enter plan title",
+            "makePublic": "Make this plan public",
+            "stepsHeading": "Steps",
+            "totalLabel": "Total:",
+            "addStep": "Add Step",
+            "addRepeatingGroup": "Add Repeating Group",
+            "submitButton": "Create Plan",
+            "stepTitlePlaceholder": "Step title",
+            "hoursPlaceholder": "Hours",
+            "hoursLabel": "Hours",
+            "minutesPlaceholder": "Mins",
+            "minutesLabel": "Minutes",
+            "secondsPlaceholder": "Secs",
+            "secondsLabel": "Seconds",
+            "repeatLabel": "Repeat",
+            "timesLabel": "times",
+            "addStepToGroup": "Add Step to Group"
+        },
+        "success": {
+            "title": "Plan Created Successfully!",
+            "description": "Your plan has been created and saved.",
+            "goToPlan": "Go to Plan",
+            "viewMyPlans": "View My Plans"
+        }
+    },
+    "EditPlanPage": {
+        "title": "Edit Plan",
+        "description": "Update your plan with steps and repeating groups.",
+        "metadata": {
+            "title": "Edit Plan - Ticktasks",
+            "description": "Edit and update your time-based action plan. Modify steps, adjust timings, and reorganize your plan structure.",
+            "keywords": "edit plan, update plan, modify plan, plan editor"
+        },
+        "auth": {
+            "title": "Authentication Required",
+            "description": "Please log in or register to edit a plan. You'll be redirected back here after authentication."
+        },
+        "form": {
+            "planTitle": "Plan Title",
+            "planTitlePlaceholder": "Enter plan title",
+            "makePublic": "Make this plan public",
+            "stepsHeading": "Steps",
+            "totalLabel": "Total:",
+            "addStep": "Add Step",
+            "addRepeatingGroup": "Add Repeating Group",
+            "submitButton": "Update Plan",
+            "stepTitlePlaceholder": "Step title",
+            "hoursPlaceholder": "Hours",
+            "hoursLabel": "Hours",
+            "minutesPlaceholder": "Mins",
+            "minutesLabel": "Minutes",
+            "secondsPlaceholder": "Secs",
+            "secondsLabel": "Seconds",
+            "repeatLabel": "Repeat",
+            "timesLabel": "times",
+            "addStepToGroup": "Add Step to Group"
+        },
+        "success": {
+            "title": "Plan Updated Successfully!",
+            "description": "Your plan has been updated.",
+            "goToPlan": "Go to Plan",
+            "viewMyPlans": "View My Plans"
+        }
+    },
+    "MyPlansPage": {
+        "title": "My Plans",
+        "createPlanButton": "Create Plan",
+        "metadata": {
+            "title": "My Plans - Ticktasks",
+            "description": "Manage and organize all your personal task plans. Create, edit, and track your productivity strategies, project workflows, and daily routines in one place.",
+            "keywords": "my plans, personal plans, task management, productivity, plan organization, workflow management"
+        },
+        "description": {
+            "intro": "Manage and organize all your personal task plans in one place. Create, edit, and track your productivity strategies, project workflows, and daily routines.",
+            "features": "Easily search, edit, delete, or bookmark your plans. Keep your tasks organized and achieve your goals with a streamlined planning experience.",
+            "stats": "📋 You have {total} plans in your collection"
+        },
+        "auth": {
+            "title": "Authentication Required",
+            "description": "Please log in or register to view your plans. You'll be redirected back here after authentication."
+        },
+        "table": {
+            "searchPlaceholder": "Search plans by title...",
+            "emptyState": "You haven't created any plans yet.",
+            "emptyStateButton": "Create your first plan",
+            "noResults": "No plans found matching",
+            "columns": {
+                "title": "Title",
+                "duration": "Duration",
+                "createdAt": "Created At",
+                "actions": "Actions"
+            },
+            "actions": {
+                "edit": "Edit",
+                "bookmark": "Bookmark",
+                "removeBookmark": "Remove bookmark",
+                "delete": "Delete"
+            },
+            "deleteDialog": {
+                "title": "Are you absolutely sure?",
+                "description": "This will permanently delete \"{title}\" and all of its steps. This action cannot be undone.",
+                "cancel": "Cancel",
+                "confirm": "Delete"
+            },
+            "pagination": {
+                "showing": "Showing {start}-{end} of {total} plans",
+                "page": "Page {current} of {total}",
+                "previous": "Previous",
+                "next": "Next"
+            }
+        }
+    },
+    "PublicPlansPage": {
+        "mainTitle": "Ticktasks: Versatile Task Management Web App",
+        "title": "Public Plans",
+        "metadata": {
+            "title": "Browse Public Plans - Ticktasks",
+            "description": "Discover and explore task plans shared by the Ticktasks community. Find inspiration, bookmark favorites, and learn from others' planning strategies.",
+            "keywords": "public plans, community plans, task management, shared plans, productivity templates, planning inspiration"
+        },
+        "description": {
+            "intro": "Discover task plans created and shared by the Ticktasks community. Browse through a diverse collection of productivity strategies, project templates, and daily routines shared by users worldwide.",
+            "features": "Search by title, bookmark your favorites, and get inspired by how others organize their tasks and achieve their goals.",
+            "stats": "🌟 Currently featuring {total} public plans from our community"
+        },
+        "links": {
+            "home": "Home",
+            "login": "Login",
+            "register": "Register",
+            "viewMyPlans": "View My Plans"
+        },
+        "table": {
+            "searchPlaceholder": "Search public plans by title...",
+            "emptyState": "No public plans available yet.",
+            "emptyStateSubtext": "Be the first to create and share a plan!",
+            "noResults": "No public plans found matching",
+            "columns": {
+                "title": "Title",
+                "duration": "Duration",
+                "createdAt": "Created At",
+                "actions": "Actions"
+            },
+            "actions": {
+                "view": "View",
+                "bookmark": "Bookmark",
+                "removeBookmark": "Remove bookmark"
+            },
+            "pagination": {
+                "showing": "Showing {start}-{end} of {total} plans",
+                "page": "Page {current} of {total}",
+                "previous": "Previous",
+                "next": "Next"
+            }
+        }
+    },
+    "BookmarksPage": {
+        "title": "Bookmarked Plans",
+        "description": {
+            "intro": "Access all your bookmarked plans in one convenient location. Save your favorite community plans and build your personal library.",
+            "features": "Quickly find and execute plans you've saved. Search, organize, and manage your bookmarked plans effortlessly.",
+            "stats": "📚 You have {total} bookmarked plans"
+        },
+        "metadata": {
+            "title": "Bookmarked Plans - Ticktasks",
+            "description": "View and manage your bookmarked plans. Access your favorite community plans and build your personal productivity library.",
+            "keywords": "bookmarks, saved plans, favorite plans, bookmarked plans, plan library"
+        },
+        "auth": {
+            "title": "Authentication Required",
+            "description": "Please log in or register to view your bookmarked plans. You'll be redirected back here after authentication."
+        },
+        "table": {
+            "searchPlaceholder": "Search bookmarked plans...",
+            "emptyState": "You haven't bookmarked any plans yet.",
+            "noResults": "No bookmarked plans found matching",
+            "columns": {
+                "title": "Title",
+                "duration": "Duration",
+                "createdAt": "Created At",
+                "actions": "Actions"
+            },
+            "actions": {
+                "bookmark": "Bookmark",
+                "removeBookmark": "Remove bookmark"
+            },
+            "pagination": {
+                "showing": "Showing {start}-{end} of {total} plans",
+                "page": "Page {current} of {total}",
+                "previous": "Previous",
+                "next": "Next"
+            }
+        }
+    },
+    "PlanDetailPage": {
+        "backToPlans": "Back to Plans",
+        "created": "Created",
+        "editPlan": "Edit Plan",
+        "metadata": {
+            "title": "{title} - Ticktasks",
+            "description": "Execute this time-based action plan: {title}. Follow along with real-time timers and step-by-step guidance.",
+            "keywords": "plan executor, {title}, time-based plan, action plan"
+        }
+    },
+    "PlanExecutor": {
+        "preview": {
+            "title": "Steps Preview",
+            "noSteps": "No steps in this plan yet.",
+            "repetition": "Rep",
+            "manual": "Manual",
+            "totalDuration": "Total Duration:",
+            "beginButton": "Begin Plan"
+        },
+        "inProgress": {
+            "title": "In Progress",
+            "step": "Step {current} of {total}",
+            "repetition": "Repetition {current}",
+            "pauseButton": "Pause",
+            "resumeButton": "Resume",
+            "skipButton": "Skip",
+            "nextStepButton": "Next Step",
+            "noDuration": "This step has no duration. Click next when ready.",
+            "nextSteps": "Next Steps:"
+        },
+        "completed": {
+            "title": "Plan Completed!",
+            "description": "Congratulations! You've completed all {count} steps of \"{title}\".",
+            "replayButton": "Replay Plan",
+            "goToMyPlans": "Go to My Plans",
+            "viewOtherPlans": "View Other Plans"
+        },
+        "navigationWarning": "You have a plan in progress. Are you sure you want to leave? Your progress will be lost."
+    },
+    "AuthorizationCard": {
+        "loginButton": "Login",
+        "registerButton": "Register",
+        "orDivider": "or"
+    },
+    "NotFoundPage": {
+        "title": "404 - Not Found",
+        "description": "The page you are looking for does not exist.",
+        "backToHome": "Go Back to Home Page"
+    }
+}
