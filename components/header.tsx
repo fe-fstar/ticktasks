@@ -15,6 +15,7 @@ import { ListIcon } from "@phosphor-icons/react/dist/ssr";
 import { getTranslations } from "next-intl/server";
 import LocaleSwitcher from "./locale-switcher";
 import SheetLink from "./sheet-link";
+import MobileLogoutButton from "./mobile-logout-button";
 
 export default async function Header() {
     const t = await getTranslations("Header");
@@ -116,9 +117,7 @@ export default async function Header() {
                                     {t("account")}
                                 </SheetLink>
                                 <div className="border-t pt-4 mt-4">
-                                    <SheetClose asChild>
-                                        <LogoutButton className="ps-4" />
-                                    </SheetClose>
+                                    <MobileLogoutButton className="ps-4" />
                                 </div>
                             </>
                         ) : (
