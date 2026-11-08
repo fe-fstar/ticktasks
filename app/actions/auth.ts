@@ -3,13 +3,13 @@
 import { SignupFormSchema, RegisterFormSchema, LoginFormSchema, FormState, ForgotPasswordFormSchema, ResetPasswordFormSchema } from "@/lib/definitions";
 import { db } from "@/db";
 import { users, passwordResetTokens } from "@/db/schema";
-import { eq, or } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import bcrypt from "bcryptjs";
 import { createSession, deleteSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { Resend } from "resend";
-import { PasswordResetEmail } from "@/components/password-reset-email";
+// import { PasswordResetEmail } from "@/components/password-reset-email";
 import crypto from "crypto";
 
 export async function signup(state: FormState, formData: FormData) {
