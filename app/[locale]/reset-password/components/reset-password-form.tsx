@@ -53,42 +53,13 @@ export default function ResetPasswordForm() {
         <AnimatedFormBox name="form-container">
             <form action={action} className="space-y-6">
                 {state?.message && (
-                    <div className={`p-3 rounded-md text-sm ${
-                        state.message.includes("successfully") 
-                            ? "bg-green-500/10 text-green-700 dark:text-green-400" 
+                    <div className={`p-3 rounded-md text-sm ${state.message.includes("successfully")
+                            ? "bg-green-500/10 text-green-700 dark:text-green-400"
                             : "bg-destructive/10 text-destructive"
-                    }`}>
+                        }`}>
                         {state.message}
                     </div>
                 )}
-
-                <div className="space-y-2">
-                    <Label htmlFor="current_password">{t("form.currentPassword")}</Label>
-                    <InputGroup>
-                        <InputGroupInput
-                            id="current_password"
-                            name="current_password"
-                            type={currentPasswordVisible ? "text" : "password"}
-                            placeholder={t("form.currentPasswordPlaceholder")}
-                            required
-                            aria-invalid={!!state?.errors?.currentPassword}
-                        />
-                        <InputGroupAddon align="inline-end">
-                            <Button
-                                size="icon"
-                                onClick={() => setCurrentPasswordVisible(v => !v)}
-                                type="button"
-                                variant="ghost"
-                            >
-                                {currentPasswordVisible ? <EyeClosedIcon weight="bold" /> : <EyeIcon weight="bold" />}
-                            </Button>
-                        </InputGroupAddon>
-                    </InputGroup>
-                    {state?.errors?.currentPassword && (
-                        <p className="text-xs text-destructive">{state.errors.currentPassword[0]}</p>
-                    )}
-                </div>
-
                 <div className="space-y-2">
                     <Label htmlFor="password">{t("form.newPassword")}</Label>
                     <InputGroup>

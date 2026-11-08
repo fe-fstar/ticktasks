@@ -480,7 +480,6 @@ export async function resetPassword(
 ) {
   // 1. Validate form fields
   const validatedFields = ResetPasswordFormSchema.safeParse({
-    currentPassword: formData.get("current_password"),
     password: formData.get("password"),
     confirmPassword: formData.get("confirm_password"),
   });
@@ -491,9 +490,16 @@ export async function resetPassword(
     };
   }
 
-  const { currentPassword, password } = validatedFields.data;
+  const { password, confirmPassword } = validatedFields.data;
 
-  // 2. Find user by email
+  // 2. Verify passwords are equal
+  if (password !== confirmPassword) {
+    return {
+      message: "Passwords must be the same.",
+    };
+  }
+
+  // 3. Find user by email
   const [user] = await db
     .select()
     .from(users)
@@ -506,7 +512,7 @@ export async function resetPassword(
     };
   }
 
-  // 3. Verify token exists for this user
+  // 4. Verify token exists for this user
   const [resetToken] = await db
     .select()
     .from(passwordResetTokens)
@@ -521,19 +527,10 @@ export async function resetPassword(
     };
   }
 
-  // 4. Verify current password
-  const passwordMatch = await bcrypt.compare(currentPassword, user.password);
-
-  if (!passwordMatch) {
-    return {
-      message: "Current password is incorrect",
-    };
-  }
-
-  // 5. Hash new password
+  // 6. Hash new password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // 6. Update user password
+  // 7. Update user password
   try {
     await db
       .update(users)
@@ -543,7 +540,7 @@ export async function resetPassword(
       })
       .where(eq(users.id, user.id));
 
-    // 7. Delete the used token
+    // 8. Delete the used token
     await db
       .delete(passwordResetTokens)
       .where(eq(passwordResetTokens.token, token));
