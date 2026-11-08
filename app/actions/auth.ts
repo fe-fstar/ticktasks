@@ -455,15 +455,16 @@ export async function requestPasswordReset(state: FormState, formData: FormData)
     const baseUrl = process.env.BASE_URL || "http://localhost:3000";
     const resetLink = `${baseUrl}/reset-password?token=${token}&email=${encodeURIComponent(user.email)}`;
 
-    await resend.emails.send({
+    const { data, error: sendError } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
       to: [user.email],
       subject: "Password Reset Request",
-      react: PasswordResetEmail({ resetLink }),
+      html: `<p>Reset your password: <a href="${resetLink}">${resetLink}</a></p>`,
     });
+
+    if (sendError) console.error("Resend API error:", JSON.stringify(sendError));
   } catch (error) {
-    console.error("Failed to send reset email:", error);
-    // Still return success message to avoid leaking information
+    console.error("Failed to send reset email:", error instanceof Error ? `${error.name}: ${error.message}` : JSON.stringify(error));
   }
 
   return {
