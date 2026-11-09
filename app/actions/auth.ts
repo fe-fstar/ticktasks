@@ -1,6 +1,6 @@
 "use server";
 
-import { SignupFormSchema, RegisterFormSchema, LoginFormSchema, FormState, ForgotPasswordFormSchema, ResetPasswordFormSchema } from "@/lib/definitions";
+import { getSignupFormSchema, getRegisterFormSchema, getLoginFormSchema, FormState, getForgotPasswordFormSchema, getResetPasswordFormSchema } from "@/lib/definitions";
 import { db } from "@/db";
 import { users, passwordResetTokens } from "@/db/schema";
 import { eq } from "drizzle-orm";
@@ -11,10 +11,17 @@ import { cookies } from "next/headers";
 import { Resend } from "resend";
 // import { PasswordResetEmail } from "@/components/password-reset-email";
 import crypto from "crypto";
+import { getLocale, getTranslations } from "next-intl/server";
+import { redirect as nextIntlRedirect } from '@/i18n/navigation';
 
 export async function signup(state: FormState, formData: FormData) {
+  const [t, tv] = await Promise.all([
+    getTranslations("Errors"),
+    getTranslations("Errors.validation")
+  ]);
+
   // 1. Validate form fields
-  const validatedFields = SignupFormSchema.safeParse({
+  const validatedFields = getSignupFormSchema(tv).safeParse({
     username: formData.get("username"),
     email: formData.get("email"),
     password: formData.get("password"),
@@ -37,7 +44,7 @@ export async function signup(state: FormState, formData: FormData) {
 
   if (existingUser.length > 0) {
     return {
-      message: "An account with this email already exists",
+      message: t("auth.emailExists"),
     };
   }
 
@@ -57,7 +64,7 @@ export async function signup(state: FormState, formData: FormData) {
 
   if (!newUser) {
     return {
-      message: "Failed to create account. Please try again.",
+      message: t("auth.createAccountFailed"),
     };
   }
 
@@ -66,7 +73,7 @@ export async function signup(state: FormState, formData: FormData) {
 
   if (!sessionCreated) {
     return {
-      message: "Failed to create session. Please try again.",
+      message: t("auth.createSessionFailed"),
     };
   }
 
@@ -80,8 +87,13 @@ export async function signup(state: FormState, formData: FormData) {
 }
 
 export async function register(state: FormState, formData: FormData) {
+  const [t, tv] = await Promise.all([
+    getTranslations("Errors"),
+    getTranslations("Errors.validation")
+  ]);
+
   // 1. Validate form fields
-  const validatedFields = RegisterFormSchema.safeParse({
+  const validatedFields = getRegisterFormSchema(tv).safeParse({
     username: formData.get("username"),
     email: formData.get("email"),
     password: formData.get("password"),
@@ -110,7 +122,7 @@ export async function register(state: FormState, formData: FormData) {
 
   if (existingUser.length > 0) {
     return {
-      message: "An account with this email already exists",
+      message: t("auth.emailExists"),
       data: { username, email, password },
     };
   }
@@ -131,7 +143,7 @@ export async function register(state: FormState, formData: FormData) {
 
   if (!newUser) {
     return {
-      message: "Failed to create account. Please try again.",
+      message: t("auth.createAccountFailed"),
       data: { username, email, password },
     };
   }
@@ -141,7 +153,7 @@ export async function register(state: FormState, formData: FormData) {
 
   if (!sessionCreated) {
     return {
-      message: "Failed to create session. Please try logging in.",
+      message: t("auth.createSessionFailedLogin"),
       data: { username, email, password },
     };
   }
@@ -158,8 +170,13 @@ export async function register(state: FormState, formData: FormData) {
 }
 
 export async function login(state: FormState, formData: FormData) {
+  const [t, tv] = await Promise.all([
+    getTranslations("Errors"),
+    getTranslations("Errors.validation")
+  ]);
+
   // 1. Validate form fields
-  const validatedFields = LoginFormSchema.safeParse({
+  const validatedFields = getLoginFormSchema(tv).safeParse({
     usernameXorEmail: formData.get("username_xor_email"),
     password: formData.get("password"),
   });
@@ -186,7 +203,7 @@ export async function login(state: FormState, formData: FormData) {
 
   if (!user) {
     return {
-      message: "Invalid username xor email and/or password",
+      message: t("auth.invalidCredentials"),
       data: { usernameXorEmail, password },
     };
   }
@@ -196,7 +213,7 @@ export async function login(state: FormState, formData: FormData) {
 
   if (!passwordMatch) {
     return {
-      message: "Invalid email or password",
+      message: t("auth.invalidCredentials"),
       data: { usernameXorEmail, password },
     };
   }
@@ -206,7 +223,7 @@ export async function login(state: FormState, formData: FormData) {
 
   if (!sessionCreated) {
     return {
-      message: "Failed to create session. Please try again.",
+      message: t("auth.createSessionFailed"),
       data: { usernameXorEmail, password },
     };
   }
@@ -224,11 +241,17 @@ export async function login(state: FormState, formData: FormData) {
 
 export async function logout() {
   await deleteSession();
-  redirect("/");
+  const locale = await getLocale();
+  nextIntlRedirect({ href: "/", locale });
 }
 
 export async function updateProfile(state: FormState, formData: FormData) {
-  const { UpdateProfileFormSchema } = await import("@/lib/definitions");
+  const [t, tv] = await Promise.all([
+    getTranslations("Errors"),
+    getTranslations("Errors.validation")
+  ]);
+
+  const { getUpdateProfileFormSchema } = await import("@/lib/definitions");
   const { getUser } = await import("@/lib/dal");
 
   // 1. Get current user
@@ -236,12 +259,12 @@ export async function updateProfile(state: FormState, formData: FormData) {
 
   if (!user) {
     return {
-      message: "You must be logged in to update your profile",
+      message: t("auth.loginRequiredUpdateProfile"),
     };
   }
 
   // 2. Validate form fields
-  const validatedFields = UpdateProfileFormSchema.safeParse({
+  const validatedFields = getUpdateProfileFormSchema(tv).safeParse({
     username: formData.get("username"),
     email: formData.get("email"),
   });
@@ -268,7 +291,7 @@ export async function updateProfile(state: FormState, formData: FormData) {
 
     if (existingUserWithUsername && existingUserWithUsername.id !== user.id) {
       return {
-        message: "Username is already taken",
+        message: t("auth.usernameTaken"),
         data: { username, email },
       };
     }
@@ -284,7 +307,7 @@ export async function updateProfile(state: FormState, formData: FormData) {
 
     if (existingUserWithEmail && existingUserWithEmail.id !== user.id) {
       return {
-        message: "Email is already taken",
+        message: t("auth.emailTaken"),
         data: { username, email },
       };
     }
@@ -302,19 +325,23 @@ export async function updateProfile(state: FormState, formData: FormData) {
       .where(eq(users.id, user.id));
 
     return {
-      message: "Profile updated successfully",
+      message: t("auth.profileUpdated"),
     };
   } catch (error) {
     console.error("Failed to update profile:", error);
     return {
-      message: "Failed to update profile. Please try again.",
+      message: t("auth.profileUpdateFailed"),
       data: { username, email },
     };
   }
 }
 
 export async function updatePassword(state: FormState, formData: FormData) {
-  const { UpdatePasswordFormSchema } = await import("@/lib/definitions");
+  const [t, tv] = await Promise.all([
+    getTranslations("Errors"),
+    getTranslations("Errors.validation")
+  ]);
+  const { getUpdatePasswordFormSchema } = await import("@/lib/definitions");
   const { getUser } = await import("@/lib/dal");
 
   // 1. Get current user
@@ -322,12 +349,12 @@ export async function updatePassword(state: FormState, formData: FormData) {
 
   if (!user) {
     return {
-      message: "You must be logged in to update your password",
+      message: t("auth.loginRequiredUpdatePassword"),
     };
   }
 
   // 2. Validate form fields
-  const validatedFields = UpdatePasswordFormSchema.safeParse({
+  const validatedFields = getUpdatePasswordFormSchema(tv).safeParse({
     currentPassword: formData.get("current_password"),
     newPassword: formData.get("new_password"),
     confirmPassword: formData.get("confirm_password"),
@@ -350,7 +377,7 @@ export async function updatePassword(state: FormState, formData: FormData) {
 
   if (!userWithPassword) {
     return {
-      message: "User not found",
+      message: t("auth.userNotFound"),
     };
   }
 
@@ -359,7 +386,7 @@ export async function updatePassword(state: FormState, formData: FormData) {
 
   if (!passwordMatch) {
     return {
-      message: "Current password is incorrect",
+      message: t("auth.currentPasswordIncorrect"),
       data: { currentPassword, newPassword },
     };
   }
@@ -378,20 +405,24 @@ export async function updatePassword(state: FormState, formData: FormData) {
       .where(eq(users.id, user.id));
 
     return {
-      message: "Password updated successfully",
+      message: t("auth.passwordUpdated"),
     };
   } catch (error) {
     console.error("Failed to update password:", error);
     return {
-      message: "Failed to update password. Please try again.",
+      message: t("auth.passwordUpdateFailed"),
       data: { currentPassword, newPassword },
     };
   }
 }
 
 export async function requestPasswordReset(state: FormState, formData: FormData) {
+  const [t, tv] = await Promise.all([
+    getTranslations("Errors"),
+    getTranslations("Errors.validation")
+  ]);
   // 1. Validate form fields
-  const validatedFields = ForgotPasswordFormSchema.safeParse({
+  const validatedFields = getForgotPasswordFormSchema(tv).safeParse({
     usernameXorEmail: formData.get("username_xor_email"),
   });
 
@@ -407,7 +438,7 @@ export async function requestPasswordReset(state: FormState, formData: FormData)
   const { usernameXorEmail } = validatedFields.data;
 
   // Always return the same message regardless of whether the user exists
-  const successMessage = "If an account with those credentials exists, we've sent a password reset link to its mailbox.";
+  const successMessage = t("auth.resetRequestSent");
 
   // 2. Query the database for the user by email or username
   const isEmail = usernameXorEmail.includes("@");
@@ -478,8 +509,12 @@ export async function resetPassword(
   state: FormState,
   formData: FormData
 ) {
+  const [t, tv] = await Promise.all([
+    getTranslations("Errors"),
+    getTranslations("Errors.validation")
+  ]);
   // 1. Validate form fields
-  const validatedFields = ResetPasswordFormSchema.safeParse({
+  const validatedFields = getResetPasswordFormSchema(tv).safeParse({
     password: formData.get("password"),
     confirmPassword: formData.get("confirm_password"),
   });
@@ -495,7 +530,7 @@ export async function resetPassword(
   // 2. Verify passwords are equal
   if (password !== confirmPassword) {
     return {
-      message: "Passwords must be the same.",
+      message: t("auth.passwordsMustMatch"),
     };
   }
 
@@ -508,7 +543,7 @@ export async function resetPassword(
 
   if (!user) {
     return {
-      message: "Invalid or expired reset link",
+      message: t("auth.invalidResetLink"),
     };
   }
 
@@ -523,7 +558,7 @@ export async function resetPassword(
 
   if (!resetToken || resetToken.userId !== user.id) {
     return {
-      message: "Invalid or expired reset link",
+      message: t("auth.invalidResetLink"),
     };
   }
 
@@ -546,12 +581,12 @@ export async function resetPassword(
       .where(eq(passwordResetTokens.token, token));
 
     return {
-      message: "Password reset successfully. You can now log in with your new password.",
+      message: t("auth.passwordResetSuccess"),
     };
   } catch (error) {
     console.error("Failed to reset password:", error);
     return {
-      message: "Failed to reset password. Please try again.",
+      message: t("auth.passwordResetFailed"),
     };
   }
 }

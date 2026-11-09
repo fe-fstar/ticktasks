@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { plans, steps, stepGroups, bookmarks } from "@/db/schema";
 import { getUser } from "@/lib/dal";
 import { eq, desc, and, sql, or } from "drizzle-orm";
+import { getTranslations } from "next-intl/server";
 
 type StepInput = {
   id: string;
@@ -42,10 +43,14 @@ export async function createPlan(
   formData: FormData
 ): Promise<CreatePlanFormState> {
   // 1. Check if user is authenticated
-  const user = await getUser();
+  const [t, user] = await Promise.all([
+    getTranslations("Errors.plans"),
+    getUser()
+  ]);
+  
   if (!user) {
     return {
-      message: "You must be logged in to create a plan",
+      message: t("loginRequiredCreate"),
     };
   }
 
@@ -58,7 +63,7 @@ export async function createPlan(
   if (!title || title.trim().length === 0) {
     return {
       errors: {
-        title: ["Plan title is required"],
+        title: [t("titleRequired")],
       },
     };
   }
@@ -66,7 +71,7 @@ export async function createPlan(
   if (title.length > 200) {
     return {
       errors: {
-        title: ["Plan title must be less than 200 characters"],
+        title: [t("titleTooLong")],
       },
     };
   }
@@ -76,14 +81,14 @@ export async function createPlan(
     planItems = JSON.parse(planItemsJson);
   } catch {
     return {
-      message: "Invalid plan data",
+      message: t("invalidPlanData"),
     };
   }
 
   if (!planItems || planItems.length === 0) {
     return {
       errors: {
-        steps: ["Plan must have at least one step"],
+        steps: [t("stepsRequired")],
       },
     };
   }
@@ -94,7 +99,7 @@ export async function createPlan(
       if (!item.data.title || item.data.title.trim().length === 0) {
         return {
           errors: {
-            steps: ["All steps must have a title"],
+            steps: [t("stepTitleRequired")],
           },
         };
       }
@@ -103,7 +108,7 @@ export async function createPlan(
         if (!step.title || step.title.trim().length === 0) {
           return {
             errors: {
-              steps: ["All steps must have a title"],
+              steps: [t("stepTitleRequired")],
             },
           };
         }
@@ -169,7 +174,7 @@ export async function createPlan(
   } catch (error) {
     console.error("Failed to create plan:", error);
     return {
-      message: "Failed to create plan. Please try again.",
+      message: t("createFailed"),
     };
   }
 }
@@ -504,9 +509,10 @@ export async function getPublicPlansWithBookmarkStatus(
 }
 
 export async function deletePlan(planId: string) {
+  const t = await getTranslations("Errors.plans");
   const user = await getUser();
   if (!user) {
-    return { success: false, message: "You must be logged in to delete a plan" };
+    return { success: false, message: t("loginRequiredDelete") };
   }
 
   try {
@@ -517,11 +523,11 @@ export async function deletePlan(planId: string) {
       .where(eq(plans.id, planId));
 
     if (!plan) {
-      return { success: false, message: "Plan not found" };
+      return { success: false, message: t("planNotFound") };
     }
 
     if (plan.userId !== user.id) {
-      return { success: false, message: "You don't have permission to delete this plan" };
+      return { success: false, message: t("noPermissionDelete") };
     }
 
     // Delete plan (cascade will handle steps and step groups)
@@ -530,7 +536,7 @@ export async function deletePlan(planId: string) {
     return { success: true };
   } catch (error) {
     console.error("Failed to delete plan:", error);
-    return { success: false, message: "Failed to delete plan. Please try again." };
+    return { success: false, message: t("deleteFailed") };
   }
 }
 
@@ -573,10 +579,14 @@ export async function updatePlan(
   formData: FormData
 ): Promise<CreatePlanFormState> {
   // 1. Check if user is authenticated
-  const user = await getUser();
+  const [t, user] = await Promise.all([
+    getTranslations("Errors.plans"),
+    getUser()
+  ]);
+  
   if (!user) {
     return {
-      message: "You must be logged in to update a plan",
+      message: t("loginRequiredUpdate"),
     };
   }
 
@@ -588,13 +598,13 @@ export async function updatePlan(
 
   if (!existingPlan) {
     return {
-      message: "Plan not found",
+      message: t("planNotFound"),
     };
   }
 
   if (existingPlan.userId !== user.id) {
     return {
-      message: "You don't have permission to update this plan",
+      message: t("noPermissionUpdate"),
     };
   }
 
@@ -607,7 +617,7 @@ export async function updatePlan(
   if (!title || title.trim().length === 0) {
     return {
       errors: {
-        title: ["Plan title is required"],
+        title: [t("titleRequired")],
       },
     };
   }
@@ -615,7 +625,7 @@ export async function updatePlan(
   if (title.length > 200) {
     return {
       errors: {
-        title: ["Plan title must be less than 200 characters"],
+        title: [t("titleTooLong")],
       },
     };
   }
@@ -625,14 +635,14 @@ export async function updatePlan(
     planItems = JSON.parse(planItemsJson);
   } catch {
     return {
-      message: "Invalid plan data",
+      message: t("invalidPlanData"),
     };
   }
 
   if (!planItems || planItems.length === 0) {
     return {
       errors: {
-        steps: ["Plan must have at least one step"],
+        steps: [t("stepsRequired")],
       },
     };
   }
@@ -643,7 +653,7 @@ export async function updatePlan(
       if (!item.data.title || item.data.title.trim().length === 0) {
         return {
           errors: {
-            steps: ["All steps must have a title"],
+            steps: [t("stepTitleRequired")],
           },
         };
       }
@@ -652,7 +662,7 @@ export async function updatePlan(
         if (!step.title || step.title.trim().length === 0) {
           return {
             errors: {
-              steps: ["All steps must have a title"],
+              steps: [t("stepTitleRequired")],
             },
           };
         }
@@ -722,7 +732,7 @@ export async function updatePlan(
   } catch (error) {
     console.error("Failed to update plan:", error);
     return {
-      message: "Failed to update plan. Please try again.",
+      message: t("updateFailed"),
     };
   }
 }

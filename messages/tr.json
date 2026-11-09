@@ -1,4 +1,10 @@
 {
+    "ThemeToggler": {
+        "light": "Açık",
+        "dark": "Koyu",
+        "system": "Sistem",
+        "message": "Temayı değiştirin"
+    },
     "HomePage": {
         "metadata": {
             "title": "Ticktasks - Zamana Dayalı Eylem Planı Yürütücüsü",
@@ -367,7 +373,8 @@
         }
     },
     "BookmarksPage": {
-        "title": "Yer İmine Eklenen Planlar",        "description": {
+        "title": "Yer İmine Eklenen Planlar",
+        "description": {
             "intro": "Tüm yer imlerine eklenen planlarınıza tek bir konumdan erişin. Favori topluluk planlarınızı kaydedin ve kişisel kütüphanenizi oluşturun.",
             "features": "Kaydetmiş olduğunuz planları hızlıca bulun ve uygulayın. Yer imlerine eklenen planlarınızı kolayca arayın, düzenleyin ve yönetin.",
             "stats": "📚 {total} yer imlerine eklenmiş planınız var"
@@ -376,7 +383,8 @@
             "title": "Yer İmine Eklenen Planlar - Ticktasks",
             "description": "Yer imlerine eklediğiniz planları görüntüleyin ve yönetin. Favori topluluk planlarınıza erişin ve kişisel verimlilik kütüphanenizi oluşturun.",
             "keywords": "yer imleri, kaydedilen planlar, favori planlar, yer imlerine eklenen planlar, plan kütüphanesi"
-        },        "auth": {
+        },
+        "auth": {
             "title": "Kimlik Doğrulama Gerekli",
             "description": "Yer imine eklediğiniz planları görüntülemek için giriş yapın veya kayıt olun. Kimlik doğrulamadan sonra buraya yönlendirileceksiniz."
         },
@@ -450,5 +458,67 @@
         "title": "404 - Bulunamadı",
         "description": "Aradığınız sayfa mevcut değil.",
         "backToHome": "Ana Sayfaya Dön"
+    },
+    "Errors": {
+        "validation": {
+            "usernameMin": "Kullanıcı adı en az 2 karakter olmalıdır",
+            "usernameMax": "Kullanıcı adı 30 karakterden kısa olmalıdır",
+            "emailInvalid": "Lütfen geçerli bir e-posta girin",
+            "passwordMin": "Şifre en az 8 karakter olmalıdır",
+            "passwordLetter": "Şifre en az bir harf içermelidir",
+            "passwordNumber": "Şifre en az bir rakam içermelidir",
+            "passwordsMismatch": "Şifreler eşleşmiyor",
+            "usernameOrEmailRequired": "Kullanıcı adı veya e-posta gereklidir",
+            "passwordRequired": "Şifre alanı boş bırakılamaz",
+            "currentPasswordRequired": "Mevcut şifre gereklidir"
+        },
+        "auth": {
+            "emailExists": "Bu e-posta ile kayıtlı bir hesap zaten var",
+            "createAccountFailed": "Hesap oluşturulamadı. Lütfen tekrar deneyin.",
+            "createSessionFailed": "Oturum oluşturulamadı. Lütfen tekrar deneyin.",
+            "createSessionFailedLogin": "Oturum oluşturulamadı. Lütfen giriş yapmayı deneyin.",
+            "invalidCredentials": "Kullanıcı adı veya e-posta ve/veya şifre geçersiz",
+            "loginRequiredUpdateProfile": "Profilinizi güncellemek için giriş yapmalısınız",
+            "usernameTaken": "Bu kullanıcı adı zaten alınmış",
+            "emailTaken": "Bu e-posta zaten kullanılıyor",
+            "profileUpdated": "Profil başarıyla güncellendi",
+            "profileUpdateFailed": "Profil güncellenemedi. Lütfen tekrar deneyin.",
+            "loginRequiredUpdatePassword": "Şifrenizi güncellemek için giriş yapmalısınız",
+            "userNotFound": "Kullanıcı bulunamadı",
+            "currentPasswordIncorrect": "Mevcut şifre yanlış",
+            "passwordUpdated": "Şifre başarıyla güncellendi",
+            "passwordUpdateFailed": "Şifre güncellenemedi. Lütfen tekrar deneyin.",
+            "resetRequestSent": "Bu bilgilere sahip bir hesap varsa, posta kutusuna bir şifre sıfırlama bağlantısı gönderdik.",
+            "passwordsMustMatch": "Şifreler aynı olmalıdır.",
+            "invalidResetLink": "Geçersiz veya süresi dolmuş sıfırlama bağlantısı",
+            "passwordResetSuccess": "Şifre başarıyla sıfırlandı. Artık yeni şifrenizle giriş yapabilirsiniz.",
+            "passwordResetFailed": "Şifre sıfırlanamadı. Lütfen tekrar deneyin."
+        },
+        "bookmarks": {
+            "loginRequiredBookmark": "Planları yer imine eklemek için giriş yapmalısınız",
+            "planNotFound": "Plan bulunamadı",
+            "cannotBookmarkPrivate": "Diğer kullanıcıların özel planlarını yer imine ekleyemezsiniz",
+            "bookmarkRemoved": "Yer imi kaldırıldı",
+            "bookmarkAdded": "Yer imi eklendi",
+            "toggleFailed": "Yer imi değiştirilemedi",
+            "loginRequiredView": "Yer imlerini görüntülemek için giriş yapmalısınız",
+            "fetchFailed": "Yer imleri getirilemedi"
+        },
+        "plans": {
+            "loginRequiredCreate": "Plan oluşturmak için giriş yapmalısınız",
+            "titleRequired": "Plan başlığı gereklidir",
+            "titleTooLong": "Plan başlığı 200 karakterden kısa olmalıdır",
+            "invalidPlanData": "Geçersiz plan verisi",
+            "stepsRequired": "Planın en az bir adımı olmalıdır",
+            "stepTitleRequired": "Tüm adımların bir başlığı olmalıdır",
+            "createFailed": "Plan oluşturulamadı. Lütfen tekrar deneyin.",
+            "loginRequiredDelete": "Plan silmek için giriş yapmalısınız",
+            "planNotFound": "Plan bulunamadı",
+            "noPermissionDelete": "Bu planı silme yetkiniz yok",
+            "deleteFailed": "Plan silinemedi. Lütfen tekrar deneyin.",
+            "loginRequiredUpdate": "Planı güncellemek için giriş yapmalısınız",
+            "noPermissionUpdate": "Bu planı güncelleme yetkiniz yok",
+            "updateFailed": "Plan güncellenemedi. Lütfen tekrar deneyin."
+        }
     }
 }

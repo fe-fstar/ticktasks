@@ -1,4 +1,10 @@
 {
+    "ThemeToggler": {
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System",
+        "message": "Toggle theme"
+    },
     "HomePage": {
         "metadata": {
             "title": "Ticktasks - Time-Based Action Plan Executor",
@@ -452,5 +458,67 @@
         "title": "404 - Not Found",
         "description": "The page you are looking for does not exist.",
         "backToHome": "Go Back to Home Page"
+    },
+    "Errors": {
+        "validation": {
+            "usernameMin": "Username must be at least 2 characters long",
+            "usernameMax": "Username must be less than 30 characters",
+            "emailInvalid": "Please enter a valid email",
+            "passwordMin": "Password must be at least 8 characters",
+            "passwordLetter": "Password must contain at least one letter",
+            "passwordNumber": "Password must contain at least one number",
+            "passwordsMismatch": "Passwords don't match",
+            "usernameOrEmailRequired": "Username or email is required",
+            "passwordRequired": "Password field must not be empty",
+            "currentPasswordRequired": "Current password is required"
+        },
+        "auth": {
+            "emailExists": "An account with this email already exists",
+            "createAccountFailed": "Failed to create account. Please try again.",
+            "createSessionFailed": "Failed to create session. Please try again.",
+            "createSessionFailedLogin": "Failed to create session. Please try logging in.",
+            "invalidCredentials": "Invalid username or email and/or password",
+            "loginRequiredUpdateProfile": "You must be logged in to update your profile",
+            "usernameTaken": "Username is already taken",
+            "emailTaken": "Email is already taken",
+            "profileUpdated": "Profile updated successfully",
+            "profileUpdateFailed": "Failed to update profile. Please try again.",
+            "loginRequiredUpdatePassword": "You must be logged in to update your password",
+            "userNotFound": "User not found",
+            "currentPasswordIncorrect": "Current password is incorrect",
+            "passwordUpdated": "Password updated successfully",
+            "passwordUpdateFailed": "Failed to update password. Please try again.",
+            "resetRequestSent": "If an account with those credentials exists, we've sent a password reset link to its mailbox.",
+            "passwordsMustMatch": "Passwords must be the same.",
+            "invalidResetLink": "Invalid or expired reset link",
+            "passwordResetSuccess": "Password reset successfully. You can now log in with your new password.",
+            "passwordResetFailed": "Failed to reset password. Please try again."
+        },
+        "bookmarks": {
+            "loginRequiredBookmark": "You must be logged in to bookmark plans",
+            "planNotFound": "Plan not found",
+            "cannotBookmarkPrivate": "You cannot bookmark private plans from other users",
+            "bookmarkRemoved": "Bookmark removed",
+            "bookmarkAdded": "Bookmark added",
+            "toggleFailed": "Failed to toggle bookmark",
+            "loginRequiredView": "You must be logged in to view bookmarks",
+            "fetchFailed": "Failed to fetch bookmarks"
+        },
+        "plans": {
+            "loginRequiredCreate": "You must be logged in to create a plan",
+            "titleRequired": "Plan title is required",
+            "titleTooLong": "Plan title must be less than 200 characters",
+            "invalidPlanData": "Invalid plan data",
+            "stepsRequired": "Plan must have at least one step",
+            "stepTitleRequired": "All steps must have a title",
+            "createFailed": "Failed to create plan. Please try again.",
+            "loginRequiredDelete": "You must be logged in to delete a plan",
+            "planNotFound": "Plan not found",
+            "noPermissionDelete": "You don't have permission to delete this plan",
+            "deleteFailed": "Failed to delete plan. Please try again.",
+            "loginRequiredUpdate": "You must be logged in to update a plan",
+            "noPermissionUpdate": "You don't have permission to update this plan",
+            "updateFailed": "Failed to update plan. Please try again."
+        }
     }
 }

@@ -21,5 +21,6 @@
             "head_sampling_rate": 1,
             "invocation_logs": true
         }
-    }
+    },
+    "keep_names": false
 }

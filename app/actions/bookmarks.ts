@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { bookmarks, plans, steps, stepGroups } from "@/db/schema";
 import { getUser } from "@/lib/dal";
 import { eq, and, or, desc, sql } from "drizzle-orm";
+import { getTranslations } from "next-intl/server";
 
 export type BookmarkResult = {
   success: boolean;
@@ -18,12 +19,15 @@ export type BookmarkResult = {
  * - Other users' public plans only
  */
 export async function toggleBookmark(planId: string): Promise<BookmarkResult> {
-  const user = await getUser();
-  
+  const [t, user] = await Promise.all([
+    getTranslations("Errors.bookmarks"),
+    getUser()
+  ]);
+
   if (!user) {
     return {
       success: false,
-      message: "You must be logged in to bookmark plans",
+      message: t("loginRequiredBookmark"),
     };
   }
 
@@ -38,17 +42,17 @@ export async function toggleBookmark(planId: string): Promise<BookmarkResult> {
     if (!plan) {
       return {
         success: false,
-        message: "Plan not found",
+        message: t("planNotFound"),
       };
     }
 
     // Check if user can bookmark this plan
     const canBookmark = plan.userId === user.id || plan.isPublic;
-    
+
     if (!canBookmark) {
       return {
         success: false,
-        message: "You cannot bookmark private plans from other users",
+        message: t("cannotBookmarkPrivate"),
       };
     }
 
@@ -72,7 +76,7 @@ export async function toggleBookmark(planId: string): Promise<BookmarkResult> {
 
       return {
         success: true,
-        message: "Bookmark removed",
+        message: t("bookmarkRemoved"),
         isBookmarked: false,
       };
     } else {
@@ -84,7 +88,7 @@ export async function toggleBookmark(planId: string): Promise<BookmarkResult> {
 
       return {
         success: true,
-        message: "Bookmark added",
+        message: t("bookmarkAdded"),
         isBookmarked: true,
       };
     }
@@ -92,7 +96,7 @@ export async function toggleBookmark(planId: string): Promise<BookmarkResult> {
     console.error("Error toggling bookmark:", error);
     return {
       success: false,
-      message: "Failed to toggle bookmark",
+      message: t("toggleFailed"),
     };
   }
 }
@@ -107,12 +111,15 @@ export async function toggleBookmark(planId: string): Promise<BookmarkResult> {
  * hides from other users' bookmarks without deleting the bookmark record.
  */
 export async function getBookmarks() {
-  const user = await getUser();
-  
+  const [t, user] = await Promise.all([
+    getTranslations("Errors.bookmarks"),
+    getUser()
+  ]);
+
   if (!user) {
     return {
       success: false,
-      message: "You must be logged in to view bookmarks",
+      message: t("loginRequiredView"),
       bookmarks: [],
     };
   }
@@ -150,7 +157,7 @@ export async function getBookmarks() {
     console.error("Error fetching bookmarks:", error);
     return {
       success: false,
-      message: "Failed to fetch bookmarks",
+      message: t("fetchFailed"),
       bookmarks: [],
     };
   }
@@ -162,7 +169,7 @@ export async function getBookmarks() {
  */
 export async function isBookmarked(planId: string): Promise<boolean> {
   const user = await getUser();
-  
+
   if (!user) {
     return false;
   }
@@ -196,17 +203,17 @@ export async function getBookmarkStatusForPlans(
 ): Promise<Map<string, boolean>> {
   const user = await getUser();
   const statusMap = new Map<string, boolean>();
-  
+
   // Initialize all as not bookmarked
   planIds.forEach(id => statusMap.set(id, false));
-  
+
   if (!user || planIds.length === 0) {
     return statusMap;
   }
 
   try {
     const { inArray } = await import("drizzle-orm");
-    
+
     const bookmarkedPlans = await db
       .select({ planId: bookmarks.planId })
       .from(bookmarks)
@@ -265,7 +272,7 @@ export async function getUserBookmarkedPlansWithDetails(
         eq(plans.isPublic, true)
       ),
     ];
-    
+
     // Add fuzzy search using pg_trgm with explicit similarity threshold
     if (searchTerm.trim()) {
       whereConditions.push(
@@ -313,16 +320,16 @@ export async function getUserBookmarkedPlansWithDetails(
     // Add ordering - if search term exists, order by similarity, otherwise by bookmark created date
     const results = await (searchTerm.trim()
       ? baseQuery
-          .orderBy(
-            sql`similarity(${plans.title}, ${searchTerm.trim()}) DESC`,
-            desc(bookmarks.createdAt)
-          )
-          .limit(pageSize)
-          .offset(offset)
+        .orderBy(
+          sql`similarity(${plans.title}, ${searchTerm.trim()}) DESC`,
+          desc(bookmarks.createdAt)
+        )
+        .limit(pageSize)
+        .offset(offset)
       : baseQuery
-          .orderBy(desc(bookmarks.createdAt))
-          .limit(pageSize)
-          .offset(offset));
+        .orderBy(desc(bookmarks.createdAt))
+        .limit(pageSize)
+        .offset(offset));
 
     // Get total from first result (COUNT(*) OVER() returns same count for all rows)
     const total = results.length > 0 ? results[0].totalCount : 0;

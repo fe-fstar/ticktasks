@@ -1,47 +1,50 @@
 import { z } from "zod";
 
-export const SignupFormSchema = z.object({
+// Translator scoped to the "Errors.validation" namespace
+export type ValidationT = (key: string) => string;
+
+export const getSignupFormSchema = (t: ValidationT) => z.object({
   username: z
     .string()
-    .min(2, { message: "Username must be at least 2 characters long" })
-    .max(30, { message: "Username must be less than 30 characters" })
+    .min(2, { message: t("usernameMin") })
+    .max(30, { message: t("usernameMax") })
     .trim(),
-  email: z.string().email({ message: "Please enter a valid email" }).trim(),
+  email: z.string().email({ message: t("emailInvalid") }).trim(),
   password: z
     .string()
-    .min(8, { message: "Password must be at least 8 characters" })
-    .regex(/[a-zA-Z]/, { message: "Password must contain at least one letter" })
-    .regex(/[0-9]/, { message: "Password must contain at least one number" })
+    .min(8, { message: t("passwordMin") })
+    .regex(/[a-zA-Z]/, { message: t("passwordLetter") })
+    .regex(/[0-9]/, { message: t("passwordNumber") })
     .trim(),
 });
 
-export const RegisterFormSchema = z.object({
+export const getRegisterFormSchema = (t: ValidationT) => z.object({
   username: z
     .string()
-    .min(2, { message: "Username must be at least 2 characters long" })
-    .max(30, { message: "Username must be less than 30 characters" })
+    .min(2, { message: t("usernameMin") })
+    .max(30, { message: t("usernameMax") })
     .trim(),
-  email: z.string().email({ message: "Please enter a valid email" }).trim(),
+  email: z.string().email({ message: t("emailInvalid") }).trim(),
   password: z
     .string()
-    .min(8, { message: "Password must be at least 8 characters" })
-    .regex(/[a-zA-Z]/, { message: "Password must contain at least one letter" })
-    .regex(/[0-9]/, { message: "Password must contain at least one number" })
+    .min(8, { message: t("passwordMin") })
+    .regex(/[a-zA-Z]/, { message: t("passwordLetter") })
+    .regex(/[0-9]/, { message: t("passwordNumber") })
     .trim(),
   confirmPassword: z.string().trim(),
 }).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
+  message: t("passwordsMismatch"),
   path: ["confirmPassword"],
 });
 
-export const LoginFormSchema = z.object({
+export const getLoginFormSchema = (t: ValidationT) => z.object({
   usernameXorEmail: z
     .string()
-    .min(1, { message: "Username xor email is required" })
+    .min(1, { message: t("usernameOrEmailRequired") })
     .trim(),
   password: z
     .string()
-    .min(1, { message: "Password field must not be empty" })
+    .min(1, { message: t("passwordRequired") })
     .trim(),
 });
 
@@ -68,49 +71,49 @@ export type FormState =
     }
   | undefined;
 
-export const UpdateProfileFormSchema = z.object({
+export const getUpdateProfileFormSchema = (t: ValidationT) => z.object({
   username: z
     .string()
-    .min(2, { message: "Username must be at least 2 characters long" })
-    .max(30, { message: "Username must be less than 30 characters" })
+    .min(2, { message: t("usernameMin") })
+    .max(30, { message: t("usernameMax") })
     .trim(),
-  email: z.email({ message: "Please enter a valid email" }).trim(),
+  email: z.email({ message: t("emailInvalid") }).trim(),
 });
 
-export const UpdatePasswordFormSchema = z.object({
+export const getUpdatePasswordFormSchema = (t: ValidationT) => z.object({
   currentPassword: z
     .string()
-    .min(1, { message: "Current password is required" })
+    .min(1, { message: t("currentPasswordRequired") })
     .trim(),
   newPassword: z
     .string()
-    .min(8, { message: "Password must be at least 8 characters" })
-    .regex(/[a-zA-Z]/, { message: "Password must contain at least one letter" })
-    .regex(/[0-9]/, { message: "Password must contain at least one number" })
+    .min(8, { message: t("passwordMin") })
+    .regex(/[a-zA-Z]/, { message: t("passwordLetter") })
+    .regex(/[0-9]/, { message: t("passwordNumber") })
     .trim(),
   confirmPassword: z.string().trim(),
 }).refine((data) => data.newPassword === data.confirmPassword, {
-  message: "Passwords don't match",
+  message: t("passwordsMismatch"),
   path: ["confirmPassword"],
 });
 
-export const ForgotPasswordFormSchema = z.object({
+export const getForgotPasswordFormSchema = (t: ValidationT) => z.object({
   usernameXorEmail: z
     .string()
-    .min(1, { message: "Username or email is required" })
+    .min(1, { message: t("usernameOrEmailRequired") })
     .trim(),
 });
 
-export const ResetPasswordFormSchema = z.object({
+export const getResetPasswordFormSchema = (t: ValidationT) => z.object({
   password: z
     .string()
-    .min(8, { message: "Password must be at least 8 characters" })
-    .regex(/[a-zA-Z]/, { message: "Password must contain at least one letter" })
-    .regex(/[0-9]/, { message: "Password must contain at least one number" })
+    .min(8, { message: t("passwordMin") })
+    .regex(/[a-zA-Z]/, { message: t("passwordLetter") })
+    .regex(/[0-9]/, { message: t("passwordNumber") })
     .trim(),
   confirmPassword: z.string().trim(),
 }).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
+  message: t("passwordsMismatch"),
   path: ["confirmPassword"],
 });
 
