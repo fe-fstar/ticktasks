@@ -90,7 +90,8 @@
         "logout": "Logout",
         "menu": "Menu",
         "openMenu": "Open menu",
-        "theme": "Theme"
+        "theme": "Theme",
+        "language": "Language"
     },
     "LoginPage": {
         "title": "Login",
@@ -520,5 +521,13 @@
             "noPermissionUpdate": "You don't have permission to update this plan",
             "updateFailed": "Failed to update plan. Please try again."
         }
+    },
+    "Common": {
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "moveUp": "Move up",
+        "moveDown": "Move down",
+        "removeStep": "Remove step",
+        "removeGroup": "Remove group"
     }
 }

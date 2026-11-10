@@ -326,6 +326,7 @@ export async function updateProfile(state: FormState, formData: FormData) {
 
     return {
       message: t("auth.profileUpdated"),
+      success: true,
     };
   } catch (error) {
     console.error("Failed to update profile:", error);
@@ -406,6 +407,7 @@ export async function updatePassword(state: FormState, formData: FormData) {
 
     return {
       message: t("auth.passwordUpdated"),
+      success: true,
     };
   } catch (error) {
     console.error("Failed to update password:", error);
@@ -452,6 +454,7 @@ export async function requestPasswordReset(state: FormState, formData: FormData)
   if (!user) {
     return {
       message: successMessage,
+      success: true,
     };
   }
 
@@ -477,6 +480,7 @@ export async function requestPasswordReset(state: FormState, formData: FormData)
     console.error("Failed to create reset token:", error);
     return {
       message: successMessage,
+      success: true,
     };
   }
 
@@ -500,6 +504,7 @@ export async function requestPasswordReset(state: FormState, formData: FormData)
 
   return {
     message: successMessage,
+    success: true,
   };
 }
 
@@ -582,6 +587,7 @@ export async function resetPassword(
 
     return {
       message: t("auth.passwordResetSuccess"),
+      success: true,
     };
   } catch (error) {
     console.error("Failed to reset password:", error);

@@ -90,7 +90,8 @@
         "logout": "Çıkış Yap",
         "menu": "Menü",
         "openMenu": "Menüyü aç",
-        "theme": "Tema"
+        "theme": "Tema",
+        "language": "Dil"
     },
     "LoginPage": {
         "title": "Giriş Yap",
@@ -520,5 +521,13 @@
             "noPermissionUpdate": "Bu planı güncelleme yetkiniz yok",
             "updateFailed": "Plan güncellenemedi. Lütfen tekrar deneyin."
         }
+    },
+    "Common": {
+        "showPassword": "Şifreyi göster",
+        "hidePassword": "Şifreyi gizle",
+        "moveUp": "Yukarı taşı",
+        "moveDown": "Aşağı taşı",
+        "removeStep": "Adımı kaldır",
+        "removeGroup": "Grubu kaldır"
     }
 }

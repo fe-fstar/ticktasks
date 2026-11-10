@@ -169,6 +169,7 @@ export default function PlansTable({
                 <Input
                     type="text"
                     placeholder={t("searchPlaceholder")}
+                    enterKeyHint="search"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     className="pl-9 h-9"
@@ -254,7 +255,7 @@ export default function PlansTable({
                                                     variant="ghost"
                                                     size="icon-sm"
                                                     asChild
-                                                    className="h-8 w-8"
+                                                    className="h-8 w-8 pointer-coarse:size-11"
                                                 >
                                                     <Link href={{
                                                         pathname: '/plans/[plan_id]/edit',
@@ -268,7 +269,7 @@ export default function PlansTable({
                                                     variant="ghost"
                                                     size="icon-sm"
                                                     onClick={() => handleBookmarkToggle(plan.id)}
-                                                    className="h-8 w-8"
+                                                    className="h-8 w-8 pointer-coarse:size-11"
                                                 >
                                                     <BookmarkSimpleIcon 
                                                         className="size-4" 
@@ -282,7 +283,7 @@ export default function PlansTable({
                                                     variant="ghost"
                                                     size="icon-sm"
                                                     onClick={() => handleDeleteClick(plan.id, plan.title)}
-                                                    className="h-8 w-8 text-destructive hover:text-destructive"
+                                                    className="h-8 w-8 pointer-coarse:size-11 text-destructive hover:text-destructive"
                                                 >
                                                     <TrashIcon className="size-4" />
                                                     <span className="sr-only">{t("actions.delete")}</span>

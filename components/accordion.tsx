@@ -81,8 +81,8 @@ export function AccordionTrigger({
 
       <CaretDownIcon
         className={`
-          transition-transform
-          ${reducedMotion ? "duration-0" : "duration-300"}
+          shrink-0 transition-transform ease-out
+          ${reducedMotion ? "duration-0" : open ? "duration-250" : "duration-200"}
           ${open ? "rotate-180" : ""}
         `}
       />
@@ -101,11 +101,16 @@ export function AccordionContent({
 }: React.HTMLAttributes<HTMLDivElement>) {
   const { open, panelId, buttonId, reducedMotion } = useAccordion();
 
-  const durationOpen = reducedMotion ? "0ms" : "320ms";
-  const durationClose = reducedMotion ? "0ms" : "220ms";
+  // One timing family for the whole component: container and content share the
+  // same strong ease-out, and closing is faster than opening. Under reduced
+  // motion the height snaps but the content still fades (gentler, not none).
+  const durationOpen = reducedMotion ? "0ms" : "250ms";
+  const durationClose = reducedMotion ? "0ms" : "200ms";
 
-  const contentDurationOpen = reducedMotion ? "0ms" : "350ms";
-  const contentDurationClose = reducedMotion ? "0ms" : "150ms";
+  const contentDurationOpen = reducedMotion ? "150ms" : "250ms";
+  const contentDurationClose = reducedMotion ? "100ms" : "150ms";
+
+  const ease = "var(--ease-out)";
 
   return (
     <div
@@ -121,28 +126,20 @@ export function AccordionContent({
       style={{
         gridTemplateRows: open ? "1fr" : "0fr",
         transitionDuration: open ? durationOpen : durationClose,
-        transitionTimingFunction: reducedMotion
-          ? "linear"
-          : open
-          ? "cubic-bezier(0.22, 1, 0.36, 1)" // natural open
-          : "cubic-bezier(0.4, 0, 1, 1)",   // fast close
+        transitionTimingFunction: ease,
       }}
     >
       <div className="overflow-hidden">
         <div
           className={`
             transition-[opacity,transform]
-            ${open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"}
+            ${open ? "opacity-100 translate-y-0" : `opacity-0 ${reducedMotion ? "" : "-translate-y-1"}`}
           `}
           style={{
             transitionDuration: open
               ? contentDurationOpen
               : contentDurationClose,
-            transitionTimingFunction: reducedMotion
-              ? "linear"
-              : open
-              ? "cubic-bezier(0.22, 1, 0.36, 1)"
-              : "linear",
+            transitionTimingFunction: ease,
           }}
         >
           {children}

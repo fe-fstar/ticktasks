@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { MotionConfig } from "motion/react";
@@ -59,6 +59,15 @@ const optika = localFont({
 export const metadata: Metadata = {
   title: "Ticktasks",
   description: "Ticktasks - A simple and efficient task management app.",
+};
+
+// Mobile status bar / browser chrome color, one per scheme so dark mode doesn't
+// get a white bar. Values match --background in globals.css.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
 
 export function generateStaticParams() {

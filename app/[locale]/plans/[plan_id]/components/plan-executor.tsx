@@ -12,6 +12,8 @@ import {
   CheckCircleIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { useWebHaptics } from "web-haptics/react";
+import { motion, useReducedMotion } from "motion/react";
+import { EASE_OUT } from "@/lib/motion";
 import { useTranslations } from "next-intl";
 
 type Step = {
@@ -61,6 +63,7 @@ interface PlanExecutorProps {
 export function PlanExecutor({ plan, isAuthenticated }: PlanExecutorProps) {
   const t = useTranslations("PlanExecutor");
   const { trigger } = useWebHaptics();
+  const prefersReducedMotion = useReducedMotion() ?? false;
   const [planState, setPlanState] = useState<PlanState>("preview");
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [remainingSeconds, setRemainingSeconds] = useState(0);
@@ -527,15 +530,24 @@ export function PlanExecutor({ plan, isAuthenticated }: PlanExecutorProps) {
           {/* Progress bar */}
           <div className="mb-6">
             <div className="h-2 bg-secondary rounded-full overflow-hidden">
+              {/* scaleX instead of width: animates on the compositor, no layout per frame. */}
               <div
-                className="h-full bg-primary transition-all duration-300"
-                style={{ width: `${progress}%` }}
+                className="h-full w-full origin-left rtl:origin-right bg-primary transition-transform duration-250 ease-out"
+                style={{ transform: `scaleX(${progress / 100})` }}
               />
             </div>
           </div>
 
-          {/* Current step */}
-          <div className="mb-8">
+          {/* Current step. Keyed by index so each new step enters from the right
+              (forward reads as moving left), landing with the progress bar and
+              the haptic buzz. No exit: the old step is done, so it just goes. */}
+          <motion.div
+            key={currentStepIndex}
+            className="mb-8"
+            initial={{ opacity: 0, x: 16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.2, ease: EASE_OUT }}
+          >
             <h3 className="text-2xl font-bold mb-4">
               {currentStep.title}
               {currentStep.isFromGroup && (
@@ -548,8 +560,8 @@ export function PlanExecutor({ plan, isAuthenticated }: PlanExecutorProps) {
             {currentStep.durationSeconds > 0 && (
               <div className="text-center">
                 <div
-                  className={`text-6xl font-bold mb-4 ${remainingSeconds <= 10 && remainingSeconds > 0
-                    ? "text-destructive animate-pulse"
+                  className={`text-6xl font-bold mb-4 tabular-nums ${remainingSeconds <= 10 && remainingSeconds > 0
+                    ? "text-destructive animate-pulse motion-reduce:animate-none"
                     : ""
                     }`}
                 >
@@ -586,7 +598,7 @@ export function PlanExecutor({ plan, isAuthenticated }: PlanExecutorProps) {
                 </Button>
               </div>
             )}
-          </div>
+          </motion.div>
 
           {/* Upcoming steps */}
           {currentStepIndex < executionSteps.length - 1 && (
@@ -620,21 +632,52 @@ export function PlanExecutor({ plan, isAuthenticated }: PlanExecutorProps) {
     );
   }
 
-  // Completed state
+  // Completed state. The one rare, earned moment in the app, so it gets the
+  // delight budget: the check pops in with a little overshoot (lead), the title
+  // rises with it, then the description and actions follow as one short wave.
+  // The card itself doesn't animate: one entrance per container.
+  // Reduced motion: MotionConfig drops the movement; we also drop the delays.
   if (planState === "completed") {
+    const beat = (step: number) => (prefersReducedMotion ? 0 : step * 0.08);
+    const rise = {
+      initial: { opacity: 0, y: 6 },
+      animate: { opacity: 1, y: 0 },
+    };
+
     return (
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <CheckCircleIcon className="size-6 text-green-500" weight="fill" />
-            {t("completed.title")}
+            <motion.span
+              className="inline-flex"
+              initial={{ opacity: 0, scale: 0.6, rotate: -20 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ type: "spring", duration: 0.5, bounce: 0.45 }}
+            >
+              <CheckCircleIcon className="size-6 text-green-500" weight="fill" />
+            </motion.span>
+            <motion.span
+              {...rise}
+              transition={{ duration: 0.3, ease: EASE_OUT }}
+            >
+              {t("completed.title")}
+            </motion.span>
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground mb-6">
+          <motion.p
+            className="text-muted-foreground mb-6"
+            {...rise}
+            transition={{ duration: 0.3, ease: EASE_OUT, delay: beat(1) }}
+          >
             {t("completed.description", { count: executionSteps.length, title: plan.title })}
-          </p>
-          <div className="flex flex-wrap gap-3">
+          </motion.p>
+          <motion.div
+            className="flex flex-wrap gap-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.25, ease: EASE_OUT, delay: beat(2) }}
+          >
             <Button onClick={handleReplay} size="lg">
               <ArrowCounterClockwiseIcon className="me-2 size-5" weight="bold" />
               {t("completed.replayButton")}
@@ -648,7 +691,7 @@ export function PlanExecutor({ plan, isAuthenticated }: PlanExecutorProps) {
                 <Link href="/plans">{t("completed.viewOtherPlans")}</Link>
               </Button>
             )}
-          </div>
+          </motion.div>
         </CardContent>
       </Card>
     );

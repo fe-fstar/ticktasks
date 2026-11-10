@@ -60,6 +60,8 @@ export type FormState =
         newPassword?: string[];
       };
       message?: string;
+      /** Set on success, so the UI never has to infer the outcome from the (translated) message text. */
+      success?: boolean;
       data?: {
         username?: string;
         email?: string;

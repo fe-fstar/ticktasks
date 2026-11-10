@@ -2,6 +2,7 @@
 
 import AnimatedFormBox from "@/components/animated-form-box";
 import { motion, AnimatePresence } from "motion/react";
+import { EASE_OUT } from "@/lib/motion";
 import { useState, useActionState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -298,19 +299,21 @@ export default function CreatePlanForm() {
                     </Badge>
                 </div>
 
-                <div className="space-y-3">
-                    <AnimatePresence mode="popLayout">
+                {/* popLayout needs a positioned parent, or exiting items pop out to the wrong place */}
+                <div className="space-y-3 relative">
+                    {/* initial={false}: items already in the plan don't animate in on page load;
+                        the form box reveal is this container's one entrance */}
+                    <AnimatePresence mode="popLayout" initial={false}>
                         {planItems.map((item, index) => (
                             <motion.div
                                 key={item.type === "step" ? item.data.id : item.data.id}
                                 layout
-                                initial={{ opacity: 0, scale: 0.8, y: -20 }}
+                                initial={{ opacity: 0, scale: 0.95, y: -8 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.8, x: -100 }}
+                                exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15, ease: EASE_OUT } }}
                                 transition={{
                                     layout: { type: "spring", stiffness: 300, damping: 30 },
-                                    opacity: { duration: 0.2 },
-                                    scale: { duration: 0.2 },
+                                    default: { duration: 0.2, ease: EASE_OUT },
                                 }}
                                 className="space-y-2"
                             >
@@ -382,6 +385,7 @@ function StepRow({
     onMove: (index: number, direction: "up" | "down") => void;
 }) {
     const t = useTranslations("CreatePlanPage.form");
+    const tc = useTranslations("Common");
     return (
         <div className="flex gap-2 items-start p-3 bg-background rounded-md border">
             <div className="flex-1 space-y-2">
@@ -397,6 +401,7 @@ function StepRow({
                     <div className="flex gap-0.5">
                         <Input
                             type="number"
+                            inputMode="numeric"
                             min="0"
                             max="99"
                             value={step.hours}
@@ -409,6 +414,7 @@ function StepRow({
                     <div className="flex gap-0.5">
                         <Input
                             type="number"
+                            inputMode="numeric"
                             min="0"
                             max="59"
                             value={step.minutes}
@@ -421,6 +427,7 @@ function StepRow({
                     <div className="flex gap-0.5">
                         <Input
                             type="number"
+                            inputMode="numeric"
                             min="0"
                             max="59"
                             value={step.seconds}
@@ -438,6 +445,8 @@ function StepRow({
                     size="icon"
                     variant="ghost"
                     onClick={() => onMove(index, "up")}
+                    aria-label={tc("moveUp")}
+                    className="pointer-coarse:size-11"
                     disabled={index === 0}
                 >
                     <ArrowUpIcon weight="bold" />
@@ -447,6 +456,8 @@ function StepRow({
                     size="icon"
                     variant="ghost"
                     onClick={() => onMove(index, "down")}
+                    aria-label={tc("moveDown")}
+                    className="pointer-coarse:size-11"
                     disabled={index === totalItems - 1}
                 >
                     <ArrowDownIcon weight="bold" />
@@ -456,6 +467,8 @@ function StepRow({
                     size="icon"
                     variant="ghost"
                     onClick={onRemove}
+                    aria-label={tc("removeStep")}
+                    className="pointer-coarse:size-11"
                 >
                     <TrashIcon weight="bold" />
                 </Button>
@@ -487,6 +500,7 @@ function StepGroupRow({
     onMove: (index: number, direction: "up" | "down") => void;
 }) {
     const t = useTranslations("CreatePlanPage.form");
+    const tc = useTranslations("Common");
     return (
         <div className="border-2 border-dashed border-foreground/30 rounded-md p-3 space-y-2">
             <div className="flex items-center gap-2 justify-between">
@@ -495,6 +509,7 @@ function StepGroupRow({
                     <span className="text-sm font-medium">{t("repeatLabel")}</span>
                     <Input
                         type="number"
+                        inputMode="numeric"
                         min="1"
                         max="999"
                         value={group.repetitions}
@@ -510,6 +525,8 @@ function StepGroupRow({
                         size="icon"
                         variant="ghost"
                         onClick={() => onMove(index, "up")}
+                        aria-label={tc("moveUp")}
+                        className="pointer-coarse:size-11"
                         disabled={index === 0}
                     >
                         <ArrowUpIcon weight="bold" />
@@ -519,6 +536,8 @@ function StepGroupRow({
                         size="icon"
                         variant="ghost"
                         onClick={() => onMove(index, "down")}
+                        aria-label={tc("moveDown")}
+                        className="pointer-coarse:size-11"
                         disabled={index === totalItems - 1}
                     >
                         <ArrowDownIcon weight="bold" />
@@ -528,25 +547,26 @@ function StepGroupRow({
                         size="icon"
                         variant="ghost"
                         onClick={onRemoveGroup}
+                        aria-label={tc("removeGroup")}
+                        className="pointer-coarse:size-11"
                     >
                         <TrashIcon weight="bold" />
                     </Button>
                 </div>
             </div>
 
-            <div className="space-y-2 ps-4">
-                <AnimatePresence mode="popLayout">
+            <div className="space-y-2 ps-4 relative">
+                <AnimatePresence mode="popLayout" initial={false}>
                     {group.steps.map((step) => (
                         <motion.div
                             key={step.id}
                             layout
-                            initial={{ opacity: 0, height: 0, scale: 0.8 }}
+                            initial={{ opacity: 0, height: 0, scale: 0.95 }}
                             animate={{ opacity: 1, height: "auto", scale: 1 }}
-                            exit={{ opacity: 0, height: 0, scale: 0.8, x: -50 }}
+                            exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15, ease: EASE_OUT } }}
                             transition={{
                                 layout: { type: "spring", stiffness: 300, damping: 30 },
-                                opacity: { duration: 0.2 },
-                                height: { duration: 0.2 },
+                                default: { duration: 0.2, ease: EASE_OUT },
                             }}
                             className="flex gap-2 items-start p-2 bg-background rounded-md"
                         >
@@ -562,6 +582,7 @@ function StepGroupRow({
                                 <div className="flex gap-2">
                                     <Input
                                         type="number"
+                                        inputMode="numeric"
                                         min="0"
                                         max="99"
                                         value={step.hours}
@@ -571,6 +592,7 @@ function StepGroupRow({
                                     />
                                     <Input
                                         type="number"
+                                        inputMode="numeric"
                                         min="0"
                                         max="59"
                                         value={step.minutes}
@@ -580,6 +602,7 @@ function StepGroupRow({
                                     />
                                     <Input
                                         type="number"
+                                        inputMode="numeric"
                                         min="0"
                                         max="59"
                                         value={step.seconds}
@@ -594,6 +617,8 @@ function StepGroupRow({
                                 size="icon"
                                 variant="ghost"
                                 onClick={() => onRemoveStep(group.id, step.id)}
+                                aria-label={tc("removeStep")}
+                                className="pointer-coarse:size-11"
                                 disabled={group.steps.length === 1}
                             >
                                 <TrashIcon weight="bold" />

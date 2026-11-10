@@ -13,6 +13,7 @@ import { useTranslations } from "next-intl";
 
 export default function RegisterForm() {
     const t = useTranslations("RegisterPage");
+    const tc = useTranslations("Common");
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [state, action, pending] = useActionState(register, undefined);
 
@@ -40,6 +41,9 @@ export default function RegisterForm() {
                             id="username"
                             name="username"
                             type="text"
+                            autoCapitalize="none"
+                            autoCorrect="off"
+                            spellCheck={false}
                             placeholder={t("form.usernamePlaceholder")}
                             required
                             minLength={2}
@@ -92,6 +96,7 @@ export default function RegisterForm() {
                             <Button
                                 size="icon"
                                 onClick={() => setPasswordVisible(v => !v)}
+                                aria-label={tc(passwordVisible ? "hidePassword" : "showPassword")}
                                 type="button"
                                 variant="ghost"
                             >

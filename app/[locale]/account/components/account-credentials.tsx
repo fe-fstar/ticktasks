@@ -45,7 +45,7 @@ function ProfileForm({ user }: { user: Pick<User, "username" | "email"> }) {
     return (
         <form action={action} className="space-y-6 pt-4">
             {state?.message && (
-                <div className={`p-3 rounded-md text-sm ${state.message.includes("successfully")
+                <div className={`p-3 rounded-md text-sm ${state.success
                     ? "bg-green-500/10 text-green-600 dark:text-green-400"
                     : "bg-destructive/10 text-destructive"
                     }`}>
@@ -60,6 +60,9 @@ function ProfileForm({ user }: { user: Pick<User, "username" | "email"> }) {
                         id="username"
                         name="username"
                         type="text"
+                        autoCapitalize="none"
+                        autoCorrect="off"
+                        spellCheck={false}
                         placeholder={t("usernamePlaceholder")}
                         required
                         aria-invalid={!!state?.errors?.username}
@@ -99,6 +102,7 @@ function ProfileForm({ user }: { user: Pick<User, "username" | "email"> }) {
 
 function PasswordForm() {
     const t = useTranslations("AccountPage.passwordForm");
+    const tc = useTranslations("Common");
     const [state, action, pending] = useActionState(updatePassword, undefined);
     const [currentPasswordVisible, setCurrentPasswordVisible] = useState(false);
     const [newPasswordVisible, setNewPasswordVisible] = useState(false);
@@ -107,7 +111,7 @@ function PasswordForm() {
     return (
         <form action={action} className="space-y-6 pt-4">
             {state?.message && (
-                <div className={`p-3 rounded-md text-sm ${state.message.includes("successfully")
+                <div className={`p-3 rounded-md text-sm ${state.success
                     ? "bg-green-500/10 text-green-600 dark:text-green-400"
                     : "bg-destructive/10 text-destructive"
                     }`}>
@@ -131,6 +135,7 @@ function PasswordForm() {
                         <Button
                             size="icon"
                             onClick={() => setCurrentPasswordVisible(v => !v)}
+                            aria-label={tc(currentPasswordVisible ? "hidePassword" : "showPassword")}
                             type="button"
                             variant="ghost"
                         >
@@ -160,6 +165,7 @@ function PasswordForm() {
                         <Button
                             size="icon"
                             onClick={() => setNewPasswordVisible(v => !v)}
+                            aria-label={tc(newPasswordVisible ? "hidePassword" : "showPassword")}
                             type="button"
                             variant="ghost"
                         >
@@ -188,6 +194,7 @@ function PasswordForm() {
                         <Button
                             size="icon"
                             onClick={() => setConfirmPasswordVisible(v => !v)}
+                            aria-label={tc(confirmPasswordVisible ? "hidePassword" : "showPassword")}
                             type="button"
                             variant="ghost"
                         >

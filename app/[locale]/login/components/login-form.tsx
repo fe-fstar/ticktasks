@@ -13,6 +13,7 @@ import { useTranslations } from "next-intl";
 
 export default function LoginForm() {
     const t = useTranslations("LoginPage");
+    const tc = useTranslations("Common");
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [state, action, pending] = useActionState(login, undefined);
 
@@ -40,6 +41,9 @@ export default function LoginForm() {
                             id="username_xor_email"
                             name="username_xor_email"
                             type="text"
+                            autoCapitalize="none"
+                            autoCorrect="off"
+                            spellCheck={false}
                             placeholder={t("form.usernameXorEmailPlaceholder")}
                             required
                             aria-invalid={!!state?.errors?.usernameXorEmail}
@@ -68,6 +72,7 @@ export default function LoginForm() {
                             <Button
                                 size="icon"
                                 onClick={() => setPasswordVisible(v => !v)}
+                                aria-label={tc(passwordVisible ? "hidePassword" : "showPassword")}
                                 type="button"
                                 variant="ghost"
                             >

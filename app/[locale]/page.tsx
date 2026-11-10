@@ -162,7 +162,11 @@ export default function HomePage() {
             </section>
 
             {/* Use Cases Section */}
-            <section className="space-y-8 bg-accent/50 -mx-4 px-4 py-12 rounded-lg">
+            {/* Bleed past the column only from sm up. On phones the page margin is
+                ~9px (the column is 95% wide), so a 16px bleed overflowed the screen,
+                widened the mobile layout viewport on this page alone, and made view
+                transitions to/from it abort with "Viewport size changed". */}
+            <section className="space-y-8 bg-accent/50 sm:-mx-4 px-4 py-12 rounded-lg">
                 <h2 className="text-3xl lg:text-4xl font-bold text-center text-balance">
                     {t("useCases.title")}
                 </h2>

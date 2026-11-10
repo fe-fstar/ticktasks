@@ -14,6 +14,7 @@ import { useTranslations } from "next-intl";
 
 export default function ResetPasswordForm() {
     const t = useTranslations("ResetPasswordPage");
+    const tc = useTranslations("Common");
     const [currentPasswordVisible, setCurrentPasswordVisible] = useState(false);
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
@@ -53,7 +54,7 @@ export default function ResetPasswordForm() {
         <AnimatedFormBox name="form-container">
             <form action={action} className="space-y-6">
                 {state?.message && (
-                    <div className={`p-3 rounded-md text-sm ${state.message.includes("successfully")
+                    <div className={`p-3 rounded-md text-sm ${state.success
                             ? "bg-green-500/10 text-green-700 dark:text-green-400"
                             : "bg-destructive/10 text-destructive"
                         }`}>
@@ -78,6 +79,7 @@ export default function ResetPasswordForm() {
                             <Button
                                 size="icon"
                                 onClick={() => setPasswordVisible(v => !v)}
+                                aria-label={tc(passwordVisible ? "hidePassword" : "showPassword")}
                                 type="button"
                                 variant="ghost"
                             >
@@ -105,6 +107,7 @@ export default function ResetPasswordForm() {
                             <Button
                                 size="icon"
                                 onClick={() => setConfirmPasswordVisible(v => !v)}
+                                aria-label={tc(confirmPasswordVisible ? "hidePassword" : "showPassword")}
                                 type="button"
                                 variant="ghost"
                             >

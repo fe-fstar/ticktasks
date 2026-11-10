@@ -19,8 +19,9 @@ export const ThemeToggler = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
-          <SunIcon className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+          {/* Icon swap: a short blurred crossfade from scale(0.9), never from scale(0). */}
+          <SunIcon className="h-[1.2rem] w-[1.2rem] transition-[opacity,transform,filter] duration-200 ease-out dark:scale-90 dark:opacity-0 dark:blur-[2px]" />
+          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] scale-90 opacity-0 blur-[2px] transition-[opacity,transform,filter] duration-200 ease-out dark:scale-100 dark:opacity-100 dark:blur-none" />
           <span className="sr-only">{t("message")}</span>
         </Button>
       </DropdownMenuTrigger>

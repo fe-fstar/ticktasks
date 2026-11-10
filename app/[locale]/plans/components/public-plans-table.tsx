@@ -135,6 +135,7 @@ export default function PublicPlansTable({
                 <Input
                     type="text"
                     placeholder={t("searchPlaceholder")}
+                    enterKeyHint="search"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     className="pl-9 h-9"
@@ -220,7 +221,7 @@ export default function PublicPlansTable({
                                                     variant="ghost"
                                                     size="icon-sm"
                                                     asChild
-                                                    className="h-8 w-8"
+                                                    className="h-8 w-8 pointer-coarse:size-11"
                                                 >
                                                     <Link href={{
                                                         pathname: '/plans/[plan_id]',
@@ -235,7 +236,7 @@ export default function PublicPlansTable({
                                                         variant="ghost"
                                                         size="icon-sm"
                                                         onClick={() => handleBookmarkToggle(plan.id)}
-                                                        className="h-8 w-8"
+                                                        className="h-8 w-8 pointer-coarse:size-11"
                                                     >
                                                         <BookmarkSimpleIcon 
                                                             className="size-4" 

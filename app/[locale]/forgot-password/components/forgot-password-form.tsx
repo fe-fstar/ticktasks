@@ -25,7 +25,7 @@ export default function ForgotPasswordForm() {
         <AnimatedFormBox name="form-container">
             <form action={action} className="space-y-6">
                 {state?.message && (
-                    <div className={`p-3 rounded-md text-sm ${state.message.includes("sent")
+                    <div className={`p-3 rounded-md text-sm ${state.success
                             ? "bg-green-500/10 text-green-700 dark:text-green-400"
                             : "bg-destructive/10 text-destructive"
                         }`}>
@@ -40,6 +40,9 @@ export default function ForgotPasswordForm() {
                             id="username_xor_email"
                             name="username_xor_email"
                             type="text"
+                            autoCapitalize="none"
+                            autoCorrect="off"
+                            spellCheck={false}
                             placeholder={t("form.usernameXorEmailPlaceholder")}
                             required
                             aria-invalid={!!state?.errors?.usernameXorEmail}

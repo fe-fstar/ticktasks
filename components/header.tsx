@@ -137,10 +137,14 @@ export default async function Header() {
                             </>
                         )}
 
-                        <div className="border-t pt-4 px-4">
+                        <div className="border-t pt-4 px-4 space-y-4">
                             <div className="flex items-center justify-between">
                                 <span>{t("theme")}</span>
                                 <ThemeToggler />
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <span>{t("language")}</span>
+                                <LocaleSwitcher />
                             </div>
                         </div>
                     </nav>
